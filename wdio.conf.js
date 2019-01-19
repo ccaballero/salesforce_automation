@@ -2,6 +2,10 @@ exports.config={
     specs:[
         './test/specs/**/*.js'
     ]
+  , suites:{
+        home:['./test/specs/home.js']
+      , login:['./test/specs/login.js']
+    }
   , exclude:[]
   , maxInstances:1
   , capabilities:[{
