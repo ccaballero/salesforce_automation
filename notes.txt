@@ -1,0 +1,6 @@
+/* XPath examples
+ * //span[contains(text(),'AccountName')]/parent::label/following-sibling::input
+ * //span[contains(text(),'AccountName')]/ancestor::div[contains(@class,'uiInput')]/descendant::input
+ */
+
+

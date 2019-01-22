@@ -5,15 +5,28 @@ exports.config={
   , suites:{
         home:['./test/specs/home.js']
       , login:['./test/specs/login.js']
+      , products:['./test/specs/products.js']
     }
   , exclude:[]
   , maxInstances:1
   , capabilities:[{
         maxInstances:1
       , browserName:'chrome'
-//    },{
-//        maxInstances:1
-//      , browserName:'firefox'
+      , chromeOptions:{
+            args:[
+                'disable-web-security'
+              , 'disable-infobars'
+              , 'disable-popup-blocking'
+              , 'disable-notifications'
+            ]
+          , prefs:{
+                'profile.default_content_settings.popups':2
+              , 'profile.default_content_settings.notifications':2
+            }
+        }
+//  },{
+//      maxInstances:1
+//    , browserName:'firefox'
     }]
   , sync:true
   , logLevel:'silent'

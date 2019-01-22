@@ -7,13 +7,20 @@ const config=require('../config')
   , credentials=config.credentials.administrator;
 
 describe('login.salesforce.com',()=>{
-    it('testing login',()=>{
-        browser.url(config.url.login);
-
+    it('login form',()=>{
         login.loginAs(credentials.username,credentials.password);
-        home.appLauncher('Productos');
 
-        browser.pause(2000);
+        commons.wait('div.oneWorkspace');
+        browser.getTitle().should.be.eql('Inicio | Salesforce');
+
+        browser.getCookie('sfdc-stream').value.should.be.a.String();
+        browser.getCookie('sid_Client').value.should.be.a.String();
+        browser.getCookie('sid').value.should.be.a.String();
+        browser.getCookie('BrowserId').value.should.be.a.String();
+        browser.getCookie('clientSrc').value.should.be.a.String();
+        browser.getCookie('inst').value.should.be.a.String();
+        browser.getCookie('force-proxy-stream').value.should.be.a.String();
+        browser.getCookie('force-stream').value.should.be.a.String();
     });
 });
 

@@ -1,7 +1,7 @@
 require('should');
 
 describe('login.salesforce.com',()=>{
-    it('testing title',()=>{
+    it('web title',()=>{
         browser.url('https://login.salesforce.com');
 
         browser.getTitle().should.be.eql('Iniciar sesión | Salesforce');

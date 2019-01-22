@@ -1,7 +1,9 @@
-const commons=require('../core/commons');
+const config=require('../config')
+  , commons=require('../core/commons');
 
 class Login {
     constructor(){
+        browser.url(config.url.login);
         commons.wait('#theloginform');
     }
 
