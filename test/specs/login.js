@@ -11,7 +11,7 @@ describe('login.salesforce.com',()=>{
         login.loginAs(credentials.username,credentials.password);
 
         commons.wait('div.oneWorkspace');
-        browser.getTitle().should.be.eql('Inicio | Salesforce');
+        browser.getTitle().should.be.eql('Home | Salesforce');
 
         browser.getCookie('sfdc-stream').value.should.be.a.String();
         browser.getCookie('sid_Client').value.should.be.a.String();

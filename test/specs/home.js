@@ -4,7 +4,7 @@ describe('login.salesforce.com',()=>{
     it('web title',()=>{
         browser.url('https://login.salesforce.com');
 
-        browser.getTitle().should.be.eql('Iniciar sesión | Salesforce');
+        browser.getTitle().should.be.eql('Login | Salesforce');
     });
 });
 
