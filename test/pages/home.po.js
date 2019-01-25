@@ -1,13 +1,17 @@
-const commons=require('../core/commons');
+const commons=require('../core/commons')
+  , patterns=require('../core/patterns').home
+  , List=require('../pages/list.po');
 
 class Home {
     static appLauncher(item){
-        commons.wait('.oneWorkspace');
-        commons.click('button.salesforceIdentityAppLauncherHeader');
-        commons.wait('div.modal-container');
-        commons.click('a[title="'+item+'"]');
+        commons.wait(patterns.container);
+        commons.click(patterns.applauncher.menu);
+        commons.wait(patterns.applauncher.container);
+        commons.click(patterns.applauncher.item.format(item));
+
+        return new List();
     }
-};
+}
 
 module.exports=Home;
 

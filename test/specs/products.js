@@ -1,23 +1,39 @@
-require('should');
-
-const config=require('../config')
-  , commons=require('../core/commons')
+const expect=require('chai').expect
+  , config=require('../config')
+  , patterns=require('../core/patterns')
   , Home=require('../pages/home.po')
   , List=require('../pages/list.po')
   , Login=require('../pages/login.po')
-  , credentials=config.credentials.administrator
-  , xpath={
-        message:'//span[contains(text(),"{0}")]'
-    };
+  , credentials=config.credentials.administrator;
 
-describe('lightning.force.com',()=>{
-    it('products create',()=>{
+describe('products.js',()=>{
+    var list;
+
+    before(()=>{
         Login.loginAs(credentials.username,credentials.password);
-        Home.appLauncher('Products');
+        list=Home.appLauncher('Products');
+    });
 
-        new List()
-            .clickNew()
-            .submitNew({
+    it('product new => close',()=>{
+        list
+            .new()
+            .close();
+
+        expect(browser.element(patterns.list.modal).value).to.be.null;
+    });
+
+    it('product new => cancel',()=>{
+        list
+            .new()
+            .close();
+
+        expect(browser.element(patterns.list.modal).value).to.be.null;
+    });
+
+    it('product new => save',()=>{
+        list
+            .new()
+            .fill({
                 name:'Test Product'
               , active:true
               , code:'00001'
@@ -26,13 +42,13 @@ describe('lightning.force.com',()=>{
               , revenue:true
               , year:2018
               , description:'Test Product Automation'
-            });
+            })
+            .save();
 
-        browser.pause(3000);
-        browser.element(xpath.message.format('success')).should.be.an.Object();
-        browser.element(
-            xpath.message.format(' was created.'))
-            .should.be.an.Object();
+//        browser.element(patterns.messages.successful.format('success'))
+//            .should.be.an('object');
+//        browser.element(patterns.messages.successful.format(' was created.'))
+//            .should.be.an('object');
     });
 });
 

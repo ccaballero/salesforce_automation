@@ -1,10 +1,10 @@
-require('should');
+const expect=require('chai').expect;
 
-describe('login.salesforce.com',()=>{
+describe('home.js',()=>{
     it('web title',()=>{
         browser.url('https://login.salesforce.com');
 
-        browser.getTitle().should.be.eql('Login | Salesforce');
+        expect(browser.getTitle()).to.be.equal('Login | Salesforce');
     });
 });
 

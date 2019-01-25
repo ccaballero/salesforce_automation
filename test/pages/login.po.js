@@ -1,22 +1,23 @@
 const config=require('../config')
-  , commons=require('../core/commons');
+  , commons=require('../core/commons')
+  , patterns=require('../core/patterns').login;
 
 class Login {
     constructor(){
         browser.url(config.url.login);
-        commons.wait('#theloginform');
+        commons.wait(patterns.container);
     }
 
     setUsername(username){
-        commons.setValue('#username',username);
+        commons.setValue(patterns.form.username,username);
     }
 
     setPassword(password){
-        commons.setValue('#password',password);
+        commons.setValue(patterns.form.password,password);
     }
 
     submit(){
-        commons.click('#Login');
+        commons.click(patterns.form.submit);
     }
 
     static loginAs(username,password){
@@ -25,7 +26,7 @@ class Login {
         login.setPassword(password);
         login.submit();
     }
-};
+}
 
 module.exports=Login;
 

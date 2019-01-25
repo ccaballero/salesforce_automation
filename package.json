@@ -21,7 +21,7 @@
       },
       "homepage": "https://github.com/DiplomadoControlCalidad01/sfdc-wdio-tests-01#readme",
       "devDependencies": {
-            "should": "^13.2.3",
+            "chai": "^4.2.0",
             "wdio-mocha-framework": "^0.6.4",
             "wdio-selenium-standalone-service": "0.0.12",
             "wdio-spec-reporter": "^0.1.5",

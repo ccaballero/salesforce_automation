@@ -1,26 +1,25 @@
-require('should');
+const expect=require('chai').expect;
 
 const config=require('../config')
   , commons=require('../core/commons')
   , login=require('../pages/login.po')
-  , home=require('../pages/home.po')
   , credentials=config.credentials.administrator;
 
-describe('login.salesforce.com',()=>{
+describe('login.js',()=>{
     it('login form',()=>{
         login.loginAs(credentials.username,credentials.password);
 
         commons.wait('div.oneWorkspace');
-        browser.getTitle().should.be.eql('Home | Salesforce');
+        expect(browser.getTitle()).to.be.equal('Home | Salesforce');
 
-        browser.getCookie('sfdc-stream').value.should.be.a.String();
-        browser.getCookie('sid_Client').value.should.be.a.String();
-        browser.getCookie('sid').value.should.be.a.String();
-        browser.getCookie('BrowserId').value.should.be.a.String();
-        browser.getCookie('clientSrc').value.should.be.a.String();
-        browser.getCookie('inst').value.should.be.a.String();
-        browser.getCookie('force-proxy-stream').value.should.be.a.String();
-        browser.getCookie('force-stream').value.should.be.a.String();
+        expect(browser.getCookie('sfdc-stream').value).to.be.a('string');
+        expect(browser.getCookie('sid_Client').value).to.be.a('string');
+        expect(browser.getCookie('sid').value).to.be.a('string');
+        expect(browser.getCookie('BrowserId').value).to.be.a('string');
+        expect(browser.getCookie('clientSrc').value).to.be.a('string');
+        expect(browser.getCookie('inst').value).to.be.a('string');
+        expect(browser.getCookie('force-proxy-stream').value).to.be.a('string');
+        expect(browser.getCookie('force-stream').value).to.be.a('string');
     });
 });
 
