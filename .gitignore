@@ -14,5 +14,5 @@ package-lock.json
 
 # webdriver
 errors/
-tests/config.js
+test/config.js
 
