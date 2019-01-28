@@ -1,6 +1,6 @@
 const commons=require('../core/commons')
   , patterns=require('../core/patterns')
-  , Create=require('../pages/create.po');
+  , New=require('../pages/new.po');
 
 class List {
     constructor(){
@@ -8,8 +8,8 @@ class List {
     }
 
     new(){
-        commons.click(patterns.list.create);
-        return new Create();
+        commons.click(patterns.list.new);
+        return new New();
     }
 }
 

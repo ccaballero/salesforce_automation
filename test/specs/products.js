@@ -1,20 +1,50 @@
 const expect=require('chai').expect
   , config=require('../config')
+  , commons=require('../core/commons')
   , patterns=require('../core/patterns')
-  , Home=require('../pages/home.po')
+  , Launcher=require('../pages/launcher.po')
   , List=require('../pages/list.po')
   , Login=require('../pages/login.po')
   , credentials=config.credentials.administrator;
 
 describe('products.js',()=>{
-    var list;
-
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
-        list=Home.appLauncher('Products');
     });
 
-    it('product new => close',()=>{
+    it('F001 - Iniciador de Aplicación de salesforce muestra el enlace a '+
+       '«Productos»',()=>{
+        let launcher=new Launcher().open();
+
+        expect(launcher.exists('Products')).to.equal(true);
+
+        launcher.close();
+    });
+
+    it.only('F002 - Clic en el botón «Nuevo», lanza el formulario de creación de '+
+        'producto',()=>{
+        let modal=Launcher.app('Products').new();
+
+        expect(browser.element(patterns.new.container).value).to.not.be.null;
+
+        modal.close();
+    });
+
+    it('A001 - Producto es registrado con los valores obligatorios '+
+       'establecidos después de accionado el botón «Guardar»',()=>{
+        let modal=Launcher.app('Products').new()
+          , message=modal
+            .fill({
+                name:'TEST F003'
+              , year:2019
+            })
+            .save();
+
+        expect(message.result()).to.equal('success');
+        expect(message.text()).to.equal('Product "TEST F003" was created.');
+    });
+
+/*    it('product new => close',()=>{
         list
             .new()
             .close();
@@ -45,10 +75,6 @@ describe('products.js',()=>{
             })
             .save();
 
-//        browser.element(patterns.messages.successful.format('success'))
-//            .should.be.an('object');
-//        browser.element(patterns.messages.successful.format(' was created.'))
-//            .should.be.an('object');
-    });
+    });*/
 });
 

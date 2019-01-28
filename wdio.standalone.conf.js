@@ -14,6 +14,7 @@ config.capabilities=[{
       , prefs:{
             'profile.default_content_settings.popups':2
           , 'profile.default_content_settings.notifications':2
+          , 'intl.accept_languages':'en'
         }
     }
 }];

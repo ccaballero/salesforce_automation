@@ -3,28 +3,33 @@ const config=require('../config')
   , patterns=require('../core/patterns').login;
 
 class Login {
-    constructor(){
+    constructor(username,password){
         browser.url(config.url.login);
         commons.wait(patterns.container);
+
+        this.username=username;
+        this.password=password;
+
+        return this;
     }
 
-    setUsername(username){
+    set username(username){
         commons.setValue(patterns.form.username,username);
+        return this;
     }
 
-    setPassword(password){
+    set password(password){
         commons.setValue(patterns.form.password,password);
+        return this;
     }
 
     submit(){
         commons.click(patterns.form.submit);
+        return this;
     }
 
     static loginAs(username,password){
-        let login=new Login();
-        login.setUsername(username);
-        login.setPassword(password);
-        login.submit();
+        return new Login(username,password).submit();
     }
 }
 

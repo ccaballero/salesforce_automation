@@ -15,6 +15,13 @@ module.exports={
         browser.waitForVisible(selector,timeout);
         browser.element(selector).setValue(value);
     }
+  , select:(selector)=>{
+        browser.waitForVisible(selector,timeout);
+        return browser.element(selector);
+    }
+  , text:(selector)=>{
+        return browser.getText(selector);
+    }
   , click:(selector)=>{
         browser.waitForVisible(selector,timeout);
         browser.element(selector).click();

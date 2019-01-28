@@ -3,7 +3,7 @@ exports.config={
         './test/specs/**/*.js'
     ]
   , suites:{
-        home:['./test/specs/home.js']
+        init:['./test/specs/init.js']
       , login:['./test/specs/login.js']
       , products:['./test/specs/products.js']
     }
