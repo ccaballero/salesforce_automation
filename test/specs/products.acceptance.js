@@ -7,7 +7,7 @@ const expect=require('chai').expect
   , Login=require('../pages/login.po')
   , credentials=config.credentials.administrator;
 
-describe('products.js',()=>{
+describe('products.acceptance.js',()=>{
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });

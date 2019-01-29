@@ -38,6 +38,7 @@ module.exports={
       , cancel:'div.modal-container button[title="Cancel"]'
       , close:'div.modal-container button[title="Close this window"]'
       , messagevalidation:'div.modal-container span.genericError'
+      , errorslist:'ul.errorsList li:nth-child(1)'
     }
   , view:{
         container:'div.oneRecordHomeFlexipage'

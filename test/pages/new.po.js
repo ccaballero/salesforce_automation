@@ -78,6 +78,10 @@ class New{
     messagevalidation(){
         return commons.text(patterns.new.messagevalidation);
     }
+
+    errorslist(){
+        return commons.text(patterns.new.errorslist);
+    }
 }
 
 module.exports=New;

@@ -9,7 +9,7 @@ exports.config={
             './test/specs/products.functional.js'
           , './test/specs/products.acceptance.js'
           , './test/specs/products.negative.js'
-//          , './test/specs/products.domain.js'
+          , './test/specs/products.domain.js'
         ]
     }
   , exclude:[]
