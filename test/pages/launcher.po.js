@@ -1,39 +1,40 @@
 const commons=require('../core/commons')
-  , patterns=require('../core/patterns').launcher
+  , patterns=require('../core/patterns')
   , List=require('../pages/list.po');
 
 class Launcher {
-    constructor(){
-        commons.wait(patterns.base);
+    constructor(from){
+        commons.wait(patterns.launcher.base);
         return this;
     }
 
     open(){
-        commons.click(patterns.menu);
-        commons.wait(patterns.container);
+        commons.click(patterns.launcher.menu);
+        commons.wait(patterns.launcher.container);
         return this;
     }
 
     close(){
-        commons.click(patterns.close);
+        commons.click(patterns.launcher.close);
+        browser.pause(1000);
     }
 
     exists(module){
-        commons.wait(patterns.container);
+        commons.wait(patterns.launcher.container);
 
         return commons.select(
-            patterns.item.format(module)).value!==null;
+            patterns.launcher.item.format(module)).value!==null;
     }
 
     item(module){
-        commons.wait(patterns.container);
-        commons.click(patterns.item.format(module));
+        commons.wait(patterns.launcher.container);
+        commons.click(patterns.launcher.item.format(module));
 
         return new List();
     }
 
-    static app(module){
-        return new Launcher().open().item(module);
+    static app(from,module){
+        return new Launcher(from).open().item(module);
     }
 }
 

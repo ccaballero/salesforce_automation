@@ -8,10 +8,10 @@ module.exports={
         }
     }
   , launcher:{
-        base:'.oneWorkspace'
+        base:'div.oneWorkspace'
       , container:'div.modal-container'
-      , close:'div.modal-container button[title="Close this window"]'
       , menu:'button.salesforceIdentityAppLauncherHeader'
+      , close:'div.modal-container button[title="Close this window"]'
       , item:'a[title="{0}"]'
     }
   , list:{
@@ -41,7 +41,7 @@ module.exports={
         container:'div.slds-notify'
       , result:'div.slds-notify>lightning-icon>span.slds-assistive-text'
       , message:'div.slds-notify>div.toastContent span.toastMessage'
-      , close:'div.slds.notify button.toastClose'
+      , close:'div.slds-notify button.toastClose'
     }
   , listview:{
         current:'h1>div.triggerLink>div>span.triggerLinkText.selectedListView'
