@@ -9,6 +9,7 @@ class List {
 
     new(){
         commons.click(patterns.list.new);
+
         return new New();
     }
 }

@@ -24,7 +24,7 @@ class New{
 
         if(obj.family){
             commons.click(patterns.new.select.format('Product Family'));
-            browser.pause(1000);
+            browser.pause(2000);
             commons.click(patterns.new.option.format(obj.family));
         }
 
@@ -58,7 +58,7 @@ class New{
         }
     }
 
-    saveandnew(successful=false){
+    saveandnew(successful=true){
         commons.click(patterns.new.saveandnew);
         if(successful){
             return new Message();

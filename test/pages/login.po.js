@@ -15,16 +15,19 @@ class Login {
 
     set username(username){
         commons.setValue(patterns.form.username,username);
+
         return this;
     }
 
     set password(password){
         commons.setValue(patterns.form.password,password);
+
         return this;
     }
 
     submit(){
         commons.click(patterns.form.submit);
+
         return this;
     }
 

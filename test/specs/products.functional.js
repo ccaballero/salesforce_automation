@@ -30,22 +30,6 @@ describe('products.js',()=>{
         modal_new.close();
     });
 
-    it('A001 - Producto es registrado con los valores obligatorios '+
-       'establecidos después de accionado el botón «Guardar»',()=>{
-        let modal_new=Launcher.app('Products').new()
-          , message=modal_new
-                .fill({
-                    name:'TEST A001'
-                  , year:2019
-                })
-                .save();
-
-        expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "TEST A001" was created.');
-
-        message.close();
-    });
-
     it('F003 - Producto es registrado con los valores obligatorios '+
         'establecidos después de accionado el botón «Guardar y nuevo»',()=>{
         let modal_new=Launcher.app('Products').new()
@@ -74,20 +58,6 @@ describe('products.js',()=>{
         let modal_new=Launcher.app('Products').new().close();
 
         expect(browser.element(patterns.new.container).value).to.be.null;
-    });
-
-    it('N001 - Clic en el botón «Guardar» para un formulario vacío '+
-        'envía el mensaje «Revise los errores de esta página»',()=>{
-        let modal_new=Launcher.app('Products').new();
-
-        modal_new
-            .fill({})
-            .save(false);
-
-        expect(modal_new.messagevalidation())
-            .to.equal('Review the errors on this page.');
-
-        modal_new.close();
     });
 
     it('F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se '+

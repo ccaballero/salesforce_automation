@@ -11,7 +11,7 @@ class Launcher {
         }else if(url.indexOf('/view')>0){
             commons.wait(patterns.view.container);
         }else{
-            commons.wait(patterns.launcher.base);
+            commons.wait(patterns.setup.container);
         }
 
         return this;

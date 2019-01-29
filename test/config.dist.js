@@ -1,5 +1,8 @@
 module.exports={
     timeout:30000
+  , url:{
+      login:'https://login.salesforce.com'
+    }
   , credentials:{
         administrator:{
             username:''
@@ -16,8 +19,9 @@ module.exports={
           , browser_version:'72.0 beta'
         }]
     }
-  , url:{
-      login:'https://login.salesforce.com'
+  , docker:{
+        host:'127.0.0.1'
+      , port:4444
     }
 };
 

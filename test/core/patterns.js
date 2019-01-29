@@ -7,9 +7,11 @@ module.exports={
           , submit:'#Login'
         }
     }
+  , setup:{
+        container:'div.setupcontent'
+    }
   , launcher:{
-        base:'div.setupcontent'
-      , container:'div.modal-container'
+        container:'div.modal-container'
       , menu:'//span[text()="App Launcher"]/ancestor::button'
       , close:'div.modal-container button[title="Close this window"]'
       , item:'div.modal-container a[title="{0}"]'
@@ -17,7 +19,7 @@ module.exports={
   , list:{
         container:'div.forceListViewManager'
       , banner:'div[role="banner"] nav[role="navigation"]>ol>li>span'
-      , new:'a[title="New"]'
+      , new:'div.forceListViewManager a[title="New"]'
       , search:'div.slds-page-header input[type="search"]'
       , controls:'button[title="{0}"]'
       , item:'//span[text()="{0}"]/parent::a'
@@ -31,10 +33,10 @@ module.exports={
       , textarea:'//span[text()="{0}"]/parent::label'+
             '/following-sibling::textarea'
       , option:'//a[text()="{0}"]'
-      , save:'button[title="Save"]'
-      , saveandnew:'button[title="Save & New"]'
-      , cancel:'button[title="Cancel"]'
-      , close:'button[title="Close this window"]'
+      , save:'div.modal-container button[title="Save"]'
+      , saveandnew:'div.modal-container button[title="Save & New"]'
+      , cancel:'div.modal-container button[title="Cancel"]'
+      , close:'div.modal-container button[title="Close this window"]'
       , messagevalidation:'div.modal-container span.genericError'
     }
   , view:{

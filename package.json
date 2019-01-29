@@ -4,7 +4,8 @@
     "description": "Automatization scripts for testing salesforce.com",
     "scripts": {
         "test": "wdio wdio.standalone.conf.js",
-        "browserstack": "wdio wdio.browserstack.conf.js"
+        "browserstack": "wdio wdio.browserstack.conf.js",
+        "docker": "wdio wdio.docker.conf.js"
     },
     "repository": {
         "type": "git",

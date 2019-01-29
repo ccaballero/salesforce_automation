@@ -13,6 +13,7 @@ if(!String.prototype.format){
 module.exports={
     setValue:(selector,value)=>{
         browser.waitForVisible(selector,timeout);
+        browser.pause(1000);
         browser.element(selector).setValue(value);
     }
   , select:(selector)=>{
@@ -24,6 +25,7 @@ module.exports={
     }
   , click:(selector)=>{
         browser.waitForVisible(selector,timeout);
+        browser.pause(2000);
         browser.click(selector);
     }
   , wait:(selector,reverse=false)=>{
