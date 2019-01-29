@@ -12,7 +12,7 @@ describe('products.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it.only('F001 - Iniciador de Aplicación de salesforce muestra el enlace a '+
+    it('F001 - Iniciador de Aplicación de salesforce muestra el enlace a '+
        '«Productos»',()=>{
         let launcher=new Launcher().open();
 
@@ -21,8 +21,8 @@ describe('products.js',()=>{
         launcher.close();
     });
 
-    it('F002 - Clic en el botón «Nuevo», lanza el formulario de creación de '+
-        'producto',()=>{
+    it('F002 - Clic en el botón «Nuevo», lanza el formulario de creación '+
+        'de producto',()=>{
         let modal_new=Launcher.app('Products').new();
 
         expect(browser.element(patterns.new.container).value).to.not.be.null;
@@ -34,11 +34,11 @@ describe('products.js',()=>{
        'establecidos después de accionado el botón «Guardar»',()=>{
         let modal_new=Launcher.app('Products').new()
           , message=modal_new
-            .fill({
-                name:'TEST A001'
-              , year:2019
-            })
-            .save();
+                .fill({
+                    name:'TEST A001'
+                  , year:2019
+                })
+                .save();
 
         expect(message.result()).to.equal('success');
         expect(message.text()).to.equal('Product "TEST A001" was created.');
@@ -50,49 +50,66 @@ describe('products.js',()=>{
         'establecidos después de accionado el botón «Guardar y nuevo»',()=>{
         let modal_new=Launcher.app('Products').new()
           , message=modal_new
-            .fill({
-                name:'TEST F003'
-              , year:2019
-            })
-            .saveandnew();
+                .fill({
+                    name:'TEST F003'
+                  , year:2019
+                })
+                .saveandnew();
 
         expect(message.result()).to.equal('success');
         expect(message.text()).to.equal('Product "TEST F003" was created.');
 
+        modal_new.close();
+    });
+
+    it('F004 - Formulario «Crear Producto» se cierra al accionar el botón '+
+       '«Cancelar»',()=>{
+        let modal_new=Launcher.app('Products').new().cancel();
+
+        expect(browser.element(patterns.new.container).value).to.be.null;
+    });
+
+    it('F005 - Formulario «Crear Producto» se cierra al accionar el '+
+        'botón «Cerrar esta ventana (X)»',()=>{
+        let modal_new=Launcher.app('Products').new().close();
+
+        expect(browser.element(patterns.new.container).value).to.be.null;
+    });
+
+    it('N001 - Clic en el botón «Guardar» para un formulario vacío '+
+        'envía el mensaje «Revise los errores de esta página»',()=>{
+        let modal_new=Launcher.app('Products').new();
+
+        modal_new
+            .fill({})
+            .save(false);
+
+        expect(modal_new.messagevalidation())
+            .to.equal('Review the errors on this page.');
+
+        modal_new.close();
+    });
+
+    it('F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se '+
+        'muestra después de registrado un producto',()=>{
+        let modal_new=Launcher.app('Products').new()
+          , message=modal_new
+                .fill({
+                    name:'TEST F006'
+                  , active:true
+                  , code:'F006'
+                  , family:'--None--'
+                  , quantity:true
+                  , revenue:true
+                  , year:2019
+                  , description:'TEST F006 F006 F006'
+                })
+                .save();
+
+        expect(message.result()).to.equal('success');
+        expect(message.text()).to.equal('Product "TEST F006" was created.');
+
         message.close();
     });
-
-/*    it('product new => close',()=>{
-        list
-            .new()
-            .close();
-
-        expect(browser.element(patterns.list.modal).value).to.be.null;
-    });
-
-    it('product new => cancel',()=>{
-        list
-            .new()
-            .close();
-
-        expect(browser.element(patterns.list.modal).value).to.be.null;
-    });
-
-    it('product new => save',()=>{
-        list
-            .new()
-            .fill({
-                name:'Test Product'
-              , active:true
-              , code:'00001'
-              , family:'Ciencia Ficción'
-              , quantity:true
-              , revenue:true
-              , year:2018
-              , description:'Test Product Automation'
-            })
-            .save();
-
-    });*/
 });
 

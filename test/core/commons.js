@@ -24,10 +24,10 @@ module.exports={
     }
   , click:(selector)=>{
         browser.waitForVisible(selector,timeout);
-        browser.element(selector).click();
+        browser.click(selector);
     }
-  , wait:(selector)=>{
-        browser.waitForVisible(selector,timeout);
+  , wait:(selector,reverse=false)=>{
+        browser.waitForVisible(selector,timeout,reverse);
     }
 };
 

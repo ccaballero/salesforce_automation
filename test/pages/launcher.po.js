@@ -3,8 +3,17 @@ const commons=require('../core/commons')
   , List=require('../pages/list.po');
 
 class Launcher {
-    constructor(from){
-        commons.wait(patterns.launcher.base);
+    constructor(){
+        let url=browser.getUrl();
+
+        if(url.indexOf('/list')>0){
+            commons.wait(patterns.list.container);
+        }else if(url.indexOf('/view')>0){
+            commons.wait(patterns.view.container);
+        }else{
+            commons.wait(patterns.launcher.base);
+        }
+
         return this;
     }
 
@@ -16,7 +25,7 @@ class Launcher {
 
     close(){
         commons.click(patterns.launcher.close);
-        browser.pause(1000);
+        commons.wait(patterns.launcher.container,true);
     }
 
     exists(module){
@@ -33,8 +42,8 @@ class Launcher {
         return new List();
     }
 
-    static app(from,module){
-        return new Launcher(from).open().item(module);
+    static app(module){
+        return new Launcher().open().item(module);
     }
 }
 

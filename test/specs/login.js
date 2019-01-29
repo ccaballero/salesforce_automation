@@ -1,14 +1,14 @@
 const expect=require('chai').expect
   , credentials=require('../config').credentials.administrator
   , commons=require('../core/commons')
-  , patterns=require('../core/patterns').launcher
-  , Login=require('../pages/login.po');
+  , Login=require('../pages/login.po')
+  , Launcher=require('../pages/launcher.po');
 
 describe('login.js',()=>{
-    it('login form',()=>{
+    it('login credentials',()=>{
         Login.loginAs(credentials.username,credentials.password);
 
-        commons.wait(patterns.base);
+        new Launcher();
         expect(browser.getTitle()).to.be.equal('Home | Salesforce');
 
         expect(browser.getCookie('sfdc-stream').value).to.be.a('string');

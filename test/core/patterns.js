@@ -8,15 +8,14 @@ module.exports={
         }
     }
   , launcher:{
-        base:'div.oneWorkspace'
+        base:'div.setupcontent'
       , container:'div.modal-container'
-      , menu:'button.salesforceIdentityAppLauncherHeader'
+      , menu:'//span[text()="App Launcher"]/ancestor::button'
       , close:'div.modal-container button[title="Close this window"]'
-      , item:'a[title="{0}"]'
+      , item:'div.modal-container a[title="{0}"]'
     }
   , list:{
         container:'div.forceListViewManager'
-      , modal:'div.DESKTOP.open.active'
       , banner:'div[role="banner"] nav[role="navigation"]>ol>li>span'
       , new:'a[title="New"]'
       , search:'div.slds-page-header input[type="search"]'
@@ -36,6 +35,10 @@ module.exports={
       , saveandnew:'button[title="Save & New"]'
       , cancel:'button[title="Cancel"]'
       , close:'button[title="Close this window"]'
+      , messagevalidation:'div.modal-container span.genericError'
+    }
+  , view:{
+        container:'div.oneRecordHomeFlexipage'
     }
   , messages:{
         container:'div.slds-notify'

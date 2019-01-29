@@ -16,6 +16,7 @@ class Message{
 
     close(){
         commons.click(patterns.messages.close);
+        commons.wait(patterns.messages.container,true);
     }
 }
 

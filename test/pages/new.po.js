@@ -8,20 +8,24 @@ class New{
     }
 
     fill(obj){
-        commons.setValue(patterns.new.input.format('Product Name'),obj.name);
+        if(obj.name){
+            commons.setValue(
+                patterns.new.input.format('Product Name'),obj.name);
+        }
 
         if(obj.active){
             commons.click(patterns.new.input.format('Active'));
         }
 
         if(obj.code){
-            commons.setValue(patterns.new.input.format('Product Code'),obj.code);
+            commons.setValue(
+                patterns.new.input.format('Product Code'),obj.code);
         }
 
         if(obj.family){
             commons.click(patterns.new.select.format('Product Family'));
             browser.pause(1000);
-            commons.click(patterns.new.option.format('Ciencia Ficción'));
+            commons.click(patterns.new.option.format(obj.family));
         }
 
         if(obj.quantity){
@@ -47,24 +51,32 @@ class New{
         return this;
     }
 
-    save(){
+    save(successful=true){
         commons.click(patterns.new.save);
-        return new Message();
+        if(successful){
+            return new Message();
+        }
     }
 
-    saveandnew(){
+    saveandnew(successful=false){
         commons.click(patterns.new.saveandnew);
-        browser.pause(4000);
+        if(successful){
+            return new Message();
+        }
     }
 
     cancel(){
         commons.click(patterns.new.cancel);
-        browser.pause(1000);
+        commons.wait(patterns.new.container,true);
     }
 
     close(){
         commons.click(patterns.new.close);
-        browser.pause(1000);
+        commons.wait(patterns.new.container,true);
+    }
+
+    messagevalidation(){
+        return commons.text(patterns.new.messagevalidation);
     }
 }
 
