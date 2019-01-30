@@ -12,6 +12,18 @@ exports.config={
           , './test/specs/products/new.negative.js'
           , './test/specs/products/new.domain.js'
         ]
+      , functional:[
+            './test/specs/products/new.functional.js'
+        ]
+      , acceptance:[
+            './test/specs/products/new.acceptance.js'
+        ]
+      , negative:[
+            './test/specs/products/new.negative.js'
+        ]
+      , domain:[
+            './test/specs/products/new.domain.js'
+        ]
     }
   , exclude:[]
   , maxInstances:1
