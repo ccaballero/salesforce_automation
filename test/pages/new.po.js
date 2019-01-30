@@ -9,8 +9,7 @@ class New{
 
     fill(obj){
         if(obj.name){
-            commons.setValue(
-                patterns.new.input.format('Product Name'),obj.name);
+            this.name=obj.name;
         }
 
         if(obj.active){
@@ -18,8 +17,7 @@ class New{
         }
 
         if(obj.code){
-            commons.setValue(
-                patterns.new.input.format('Product Code'),obj.code);
+            this.code=obj.code;
         }
 
         if(obj.family){
@@ -43,12 +41,36 @@ class New{
         }
 
         if(obj.description){
-            commons.setValue(
-                patterns.new.textarea.format('Product Description'),
-                obj.description);
+            this.description=obj.description;
         }
 
         return this;
+    }
+
+    set name(name){
+        commons.setValue(patterns.new.input.format('Product Name'),name);
+    }
+
+    get name(){
+        return commons.getValue(patterns.new.input.format('Product Name'));
+    }
+
+    set code(code){
+        commons.setValue(patterns.new.input.format('Product Code'),code);
+    }
+
+    get code(){
+        return commons.getValue(patterns.new.input.format('Product Code'));
+    }
+
+    set description(description){
+        commons.setValue(patterns.new.textarea.format('Product Description'),
+            description);
+    }
+
+    get description(){
+        return commons.getValue(
+            patterns.new.textarea.format('Product Description'));
     }
 
     save(successful=true){

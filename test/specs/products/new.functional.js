@@ -12,15 +12,6 @@ describe('products.functional.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('F001 - Iniciador de Aplicación de salesforce muestra el enlace a '+
-       '«Productos»',()=>{
-        let launcher=new Launcher().open();
-
-        expect(launcher.exists('Products')).to.equal(true);
-
-        launcher.close();
-    });
-
     it('F002 - Clic en el botón «Nuevo», lanza el formulario de creación '+
         'de producto',()=>{
         let modal_new=Launcher.app('Products').new();

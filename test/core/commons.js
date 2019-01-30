@@ -16,6 +16,9 @@ module.exports={
         browser.pause(1000);
         browser.element(selector).setValue(value);
     }
+  , getValue:(selector)=>{
+        return browser.getValue(selector);
+    }
   , select:(selector)=>{
         browser.waitForVisible(selector,timeout);
         return browser.element(selector);

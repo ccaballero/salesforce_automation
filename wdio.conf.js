@@ -6,10 +6,11 @@ exports.config={
         init:['./test/specs/init.js']
       , login:['./test/specs/login.js']
       , products:[
-            './test/specs/products.functional.js'
-          , './test/specs/products.acceptance.js'
-          , './test/specs/products.negative.js'
-          , './test/specs/products.domain.js'
+            './test/specs/products/new.start.js'
+          , './test/specs/products/new.functional.js'
+          , './test/specs/products/new.acceptance.js'
+          , './test/specs/products/new.negative.js'
+          , './test/specs/products/new.domain.js'
         ]
     }
   , exclude:[]
