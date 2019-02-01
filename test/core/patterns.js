@@ -7,6 +7,11 @@ module.exports={
           , submit:'#Login'
         }
     }
+  , profile:{
+        container:'div.userProfilePanel.active'
+      , menu:'button.branding-userProfile-button'
+      , logout:'a.logout'
+    }
   , setup:{
         container:'div.setupcontent'
     }

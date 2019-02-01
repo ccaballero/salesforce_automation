@@ -2,7 +2,8 @@ const expect=require('chai').expect
   , credentials=require('../config').credentials.administrator
   , commons=require('../core/commons')
   , Login=require('../pages/login.po')
-  , Launcher=require('../pages/launcher.po');
+  , Launcher=require('../pages/launcher.po')
+  , Profile=require('../pages/profile.po');
 
 describe('login.js',()=>{
     it('login credentials',()=>{
@@ -19,6 +20,10 @@ describe('login.js',()=>{
         expect(browser.getCookie('inst').value).to.be.a('string');
         expect(browser.getCookie('force-proxy-stream').value).to.be.a('string');
         expect(browser.getCookie('force-stream').value).to.be.a('string');
+    });
+
+    after(()=>{
+        Profile.profile().logout();
     });
 });
 

@@ -5,6 +5,7 @@ const expect=require('chai').expect
   , Launcher=require('../pages/launcher.po')
   , List=require('../pages/list.po')
   , Login=require('../pages/login.po')
+  , Profile=require('../pages/profile.po')
   , credentials=config.credentials.administrator;
 
 describe('products.functional.js',()=>{
@@ -19,6 +20,10 @@ describe('products.functional.js',()=>{
         expect(launcher.exists('Products')).to.equal(true);
 
         launcher.close();
+    });
+
+    after(()=>{
+        new Profile().logout();
     });
 });
 
