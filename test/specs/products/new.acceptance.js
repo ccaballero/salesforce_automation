@@ -1,13 +1,15 @@
 const expect=require('chai').expect
-  , config=require('../config')
-  , commons=require('../core/commons')
-  , patterns=require('../core/patterns')
-  , Launcher=require('../pages/launcher.po')
-  , List=require('../pages/list.po')
-  , Login=require('../pages/login.po')
+  , config=require('../../config')
+  , commons=require('../../core/commons')
+  , patterns=require('../../core/patterns')
+  , Launcher=require('../../pages/launcher.po')
+  , List=require('../../pages/list.po')
+  , Login=require('../../pages/login.po')
   , credentials=config.credentials.administrator;
 
 describe('products.acceptance.js',()=>{
+    var name='TEST A001';
+
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
@@ -17,7 +19,7 @@ describe('products.acceptance.js',()=>{
         let modal_new=Launcher.app('Products').new()
           , message=modal_new
                 .fill({
-                    name:'TEST A001'
+                    name:name
                   , year:2019
                 })
                 .save();
@@ -26,6 +28,14 @@ describe('products.acceptance.js',()=>{
         expect(message.text()).to.equal('Product "TEST A001" was created.');
 
         message.close();
+    });
+
+    after(()=>{
+        Launcher.app('Products')
+            .findRow(name)
+            .options()
+            .delete()
+            .delete();
     });
 });
 

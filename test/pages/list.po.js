@@ -1,6 +1,7 @@
 const commons=require('../core/commons')
   , patterns=require('../core/patterns')
-  , New=require('../pages/new.po');
+  , New=require('./new.po')
+  , Row=require('./row.po');
 
 class List {
     constructor(){
@@ -9,8 +10,11 @@ class List {
 
     new(){
         commons.click(patterns.list.new);
-
         return new New();
+    }
+
+    findRow(name){
+        return new Row(name);
     }
 }
 

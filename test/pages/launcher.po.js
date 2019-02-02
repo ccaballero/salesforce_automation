@@ -1,6 +1,6 @@
 const commons=require('../core/commons')
   , patterns=require('../core/patterns')
-  , List=require('../pages/list.po');
+  , List=require('./list.po');
 
 class Launcher {
     constructor(){

@@ -29,7 +29,11 @@ module.exports={
       , controls:'button[title="{0}"]'
       , item:'//span[text()="{0}"]/parent::a'
     }
-  , new:{
+  , row:{
+        options:'//a[text()="{0}"]/ancestor::tr/td[last()]/span/div/a'
+      , delete:'div.actionMenu a[title="Delete"]'
+    }
+  , modal:{
         container:'div.modal-container'
       , input:'//span[text()="{0}"]/parent::label'+
             '/following-sibling::input'
@@ -42,9 +46,12 @@ module.exports={
       , saveandnew:'div.modal-container button[title="Save & New"]'
       , cancel:'div.modal-container button[title="Cancel"]'
       , close:'div.modal-container button[title="Close this window"]'
+      , delete:'div.modal-container button[title="Delete"]'
       , messagevalidation:'div.modal-container span.genericError'
       , errorslist:'ul.errorsList li:nth-child(1)'
     }
+
+
   , view:{
         container:'div.oneRecordHomeFlexipage'
     }

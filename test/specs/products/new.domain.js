@@ -1,10 +1,10 @@
 const expect=require('chai').expect
-  , config=require('../config')
-  , commons=require('../core/commons')
-  , patterns=require('../core/patterns')
-  , Launcher=require('../pages/launcher.po')
-  , List=require('../pages/list.po')
-  , Login=require('../pages/login.po')
+  , config=require('../../config')
+  , commons=require('../../core/commons')
+  , patterns=require('../../core/patterns')
+  , Launcher=require('../../pages/launcher.po')
+  , List=require('../../pages/list.po')
+  , Login=require('../../pages/login.po')
   , credentials=config.credentials.administrator;
 
 describe('products.domain.js',()=>{
