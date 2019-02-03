@@ -21,8 +21,7 @@ class New{
         }
 
         if(obj.family){
-            commons.click(patterns.modal.select.format('Product Family'));
-            browser.pause(2000);
+            commons.click(patterns.modal.select.format('Product Family'),1000);
             commons.click(patterns.modal.option.format(obj.family));
         }
 

@@ -1,9 +1,7 @@
 const expect=require('chai').expect
   , config=require('../../config')
-  , commons=require('../../core/commons')
   , patterns=require('../../core/patterns')
   , Launcher=require('../../pages/launcher.po')
-  , List=require('../../pages/list.po')
   , Login=require('../../pages/login.po')
   , Profile=require('../../pages/profile.po')
   , View=require('../../pages/view.po')
@@ -26,7 +24,8 @@ describe('products/new.functional.js',()=>{
         'de producto',()=>{
         let modal_new=Launcher.app('Products').new();
 
-        expect(browser.element(patterns.modal.container).value).to.not.be.null;
+        expect(browser.element(patterns.modal.container).value)
+            .to.not.equal(null);
 
         modal_new.close();
     });
@@ -54,16 +53,20 @@ describe('products/new.functional.js',()=>{
 
     it('F004 - Formulario «Crear Producto» se cierra al accionar el botón '+
        '«Cancelar»',()=>{
-        let modal_new=Launcher.app('Products').new().cancel();
+        Launcher.app('Products')
+            .new()
+            .cancel();
 
-        expect(browser.element(patterns.modal.container).value).to.be.null;
+        expect(browser.element(patterns.modal.container).value).to.equal(null);
     });
 
     it('F005 - Formulario «Crear Producto» se cierra al accionar el '+
         'botón «Cerrar esta ventana (X)»',()=>{
-        let modal_new=Launcher.app('Products').new().close();
+        Launcher.app('Products')
+            .new()
+            .close();
 
-        expect(browser.element(patterns.modal.container).value).to.be.null;
+        expect(browser.element(patterns.modal.container).value).to.equal(null);
     });
 
     it('F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se '+
@@ -76,7 +79,7 @@ describe('products/new.functional.js',()=>{
                   , code:code
                   , family:family
                   , quantity:quantity
-                  , revenue:quantity
+                  , revenue:revenue
                   , description:description
                 })
                 .save();

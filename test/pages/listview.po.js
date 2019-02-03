@@ -1,6 +1,5 @@
 class ListView {
     constructor(){
-        commons.wait();
     }
 }
 

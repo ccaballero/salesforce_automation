@@ -3,7 +3,7 @@ const commons=require('../core/commons')
 
 class Profile {
     contructor(){
-        commons.wait(patters.container);
+        commons.wait(patterns.container);
 
         return this;
     }

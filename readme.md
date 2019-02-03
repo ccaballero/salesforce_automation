@@ -1,14 +1,14 @@
 # Salesforce - Productos y Listas de Precios
 
 Código de automatización de los casos de prueba en los componentes dentro del
-alcance del proyecto, los casos de prueba estan descritos en el siguiente
+alcance del proyecto, los casos de prueba están descritos en el siguiente
 documento:
 
 https://docs.google.com/spreadsheets/d/e/2PACX-1vTh2QobzTZQZxyr4AUjPF37ESYTlpJndrk851t1-v2kKznQ9gtRGwa20XgRnIjL6Pi7EQcMcQlLaVib/pubhtml
 
 ## Suites disponibles:
 Se han creado suites clasificados por el tipo de prueba y otros clasificados por
-la funcionalidad que evalua, siendo estos los siguientes:
+la funcionalidad que evalúa, siendo estos los siguientes:
 
 - **init:** verificación de disponibilidad del servicio.
 - **login:** verificación de credenciales para autenticación.
@@ -19,7 +19,7 @@ la funcionalidad que evalua, siendo estos los siguientes:
 - **domain:** verificación de los casos de prueba de dominio.
 
 ## Marcos de ejecución disponibles
-Tambien se tienes disponibles diferentes formas para la ejecución en diferentes
+También se tienes disponibles diferentes formas para la ejecución en diferentes
 entornos:
 
 - **standalone:** ejecución de las pruebas en modo local.
@@ -35,7 +35,7 @@ entornos:
     cd sfdc-wdio-tests-01/
     npm install
     cp test/config.dist.js test/config.js
-    edit test/config.js # y editar las credenciales segun el caso.
+    edit test/config.js # y editar las credenciales según el caso.
     
     # Ejecución Standalone
     npm test # para la ejecución en modo standalone.
@@ -48,7 +48,7 @@ entornos:
     npm run docker
 
 ## Casos de Prueba y Tiempos de Ejecución
-A continuación se presentan los scripts ejecutados y el tiempo que tomo su
+A continuación se presentan los scripts ejecutados y el tiempo que tomó su
 ejecución.
 
     products/new.functional.js

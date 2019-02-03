@@ -1,6 +1,5 @@
 const expect=require('chai').expect
   , credentials=require('../config').credentials.administrator
-  , commons=require('../core/commons')
   , Login=require('../pages/login.po')
   , Launcher=require('../pages/launcher.po')
   , Profile=require('../pages/profile.po');

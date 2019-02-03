@@ -19,10 +19,18 @@ class Login {
         return this;
     }
 
+    get username(){
+        return commons.getValue(patterns.form.username);
+    }
+
     set password(password){
         commons.setValue(patterns.form.password,password);
 
         return this;
+    }
+
+    get password(){
+        return commons.getValue(patterns.form.password);
     }
 
     submit(){

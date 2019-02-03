@@ -1,9 +1,6 @@
 const expect=require('chai').expect
   , config=require('../../config')
-  , commons=require('../../core/commons')
-  , patterns=require('../../core/patterns')
   , Launcher=require('../../pages/launcher.po')
-  , List=require('../../pages/list.po')
   , Login=require('../../pages/login.po')
   , Profile=require('../../pages/profile.po')
   , View=require('../../pages/view.po')
@@ -36,7 +33,7 @@ describe('products/new.acceptance.js',()=>{
         expect(view.subtitle('Product Code')).to.equal('');
         expect(view.subtitle('Product Family')).to.equal('');
 
-        view.details()
+        view.details();
 
         expect(view.data('Product Name')).to.equal(name);
         expect(view.checked('Active')).to.equal(false);

@@ -29,10 +29,13 @@ module.exports={
   , attribute:(selector,attribute)=>{
         return browser.getAttribute(selector,attribute).trim();
     }
-  , click:(selector)=>{
+  , click:(selector,delay=0)=>{
         browser.waitForVisible(selector,timeout);
         browser.pause(2000);
         browser.click(selector);
+        if(delay){
+            browser.pause(delay);
+        }
     }
   , wait:(selector,reverse=false)=>{
         browser.waitForVisible(selector,timeout,reverse);
