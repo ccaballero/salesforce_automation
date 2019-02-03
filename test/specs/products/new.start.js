@@ -8,7 +8,7 @@ const expect=require('chai').expect
   , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products.functional.js',()=>{
+describe('products/new.start.js',()=>{
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
@@ -23,7 +23,7 @@ describe('products.functional.js',()=>{
     });
 
     after(()=>{
-        new Profile().logout();
+        Profile.profile().logout();
     });
 });
 

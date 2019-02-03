@@ -5,9 +5,19 @@ const expect=require('chai').expect
   , Launcher=require('../../pages/launcher.po')
   , List=require('../../pages/list.po')
   , Login=require('../../pages/login.po')
+  , Profile=require('../../pages/profile.po')
+  , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
-describe('products.functional.js',()=>{
+describe('products/new.functional.js',()=>{
+    var name='products.new.functional'
+      , active=true
+      , code='FUNCTIONAL'
+      , family='--None--'
+      , quantity=true
+      , revenue=true
+      , description='PRODUCT DESCRIPTION';
+
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
@@ -16,7 +26,7 @@ describe('products.functional.js',()=>{
         'de producto',()=>{
         let modal_new=Launcher.app('Products').new();
 
-        expect(browser.element(patterns.new.container).value).to.not.be.null;
+        expect(browser.element(patterns.modal.container).value).to.not.be.null;
 
         modal_new.close();
     });
@@ -26,29 +36,34 @@ describe('products.functional.js',()=>{
         let modal_new=Launcher.app('Products').new()
           , message=modal_new
                 .fill({
-                    name:'TEST F003'
-                  , year:2019
+                    name:name
                 })
                 .saveandnew();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "TEST F003" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         modal_new.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('F004 - Formulario «Crear Producto» se cierra al accionar el botón '+
        '«Cancelar»',()=>{
         let modal_new=Launcher.app('Products').new().cancel();
 
-        expect(browser.element(patterns.new.container).value).to.be.null;
+        expect(browser.element(patterns.modal.container).value).to.be.null;
     });
 
     it('F005 - Formulario «Crear Producto» se cierra al accionar el '+
         'botón «Cerrar esta ventana (X)»',()=>{
         let modal_new=Launcher.app('Products').new().close();
 
-        expect(browser.element(patterns.new.container).value).to.be.null;
+        expect(browser.element(patterns.modal.container).value).to.be.null;
     });
 
     it('F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se '+
@@ -56,21 +71,30 @@ describe('products.functional.js',()=>{
         let modal_new=Launcher.app('Products').new()
           , message=modal_new
                 .fill({
-                    name:'TEST F006'
-                  , active:true
-                  , code:'F006'
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:'TEST F006 F006 F006'
+                    name:name
+                  , active:active
+                  , code:code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:quantity
+                  , description:description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "TEST F006" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
+    });
+
+    after(()=>{
+        Profile.profile().logout();
     });
 });
 

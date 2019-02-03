@@ -5,9 +5,10 @@ const expect=require('chai').expect
   , Launcher=require('../../pages/launcher.po')
   , List=require('../../pages/list.po')
   , Login=require('../../pages/login.po')
+  , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products.negative.js',()=>{
+describe('products/new.negative.js',()=>{
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
@@ -24,6 +25,10 @@ describe('products.negative.js',()=>{
             .to.equal('Review the errors on this page.');
 
         modal_new.close();
+    });
+
+    after(()=>{
+        Profile.profile().logout();
     });
 });
 

@@ -5,28 +5,36 @@ const expect=require('chai').expect
   , Launcher=require('../../pages/launcher.po')
   , List=require('../../pages/list.po')
   , Login=require('../../pages/login.po')
+  , Profile=require('../../pages/profile.po')
+  , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
-describe('products.domain.js',()=>{
+describe('products/new.domain.js',()=>{
+    var name='products.new.domain'
+      , active=true
+      , code='DOMAIN'
+      , family='--None--'
+      , quantity=true
+      , revenue=true
+      , description='PRODUCT DESCRIPTION';
+
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
     it('D001 - Formulario «Crear Producto» no realiza el registro, cuando el '+
        'campo «Nombre del producto» tiene 0 caracteres',()=>{
-        let modal_new=Launcher.app('Products').new()
-          , name=''
+        let modal_new=Launcher.app('Products').new();
 
         modal_new
             .fill({
-                name:name
-              , active:true
-              , code:'D001'
-              , family:'--None--'
-              , quantity:true
-              , revenue:true
-              , year:2019
-              , description:'TEST D001 D001 D001'
+                name:''
+              , active:active
+              , code:code
+              , family:family
+              , quantity:quantity
+              , revenue:quantity
+              , description:description
             })
             .save(false);
 
@@ -41,58 +49,68 @@ describe('products.domain.js',()=>{
     it('D002 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Nombre del producto» tiene 1 carácter',()=>{
         let modal_new=Launcher.app('Products').new()
-          , name='D'
+          , _name=name.substring(0,1)
           , message=modal_new
                 .fill({
-                    name:name
-                  , active:true
-                  , code:'D002'
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:'TEST D002 D002 D002'
+                    name:_name
+                  , active:active
+                  , code:code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "'+name+'" was created.');
+        expect(message.text()).to.equal('Product "'+_name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D003 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Nombre del producto» tiene 255 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , name='TEST '+'D003 '.repeat(50)
+          , _name=name.substring(0,5).repeat(51)
           , message=modal_new
                 .fill({
-                    name:name
-                  , active:true
-                  , code:'D003'
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:'TEST D003 D003 D003'
+                    name:_name
+                  , active:active
+                  , code:code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "'+name+'" was created.');
+        expect(message.text()).to.equal('Product "'+_name+'" was created.');
 
-        message.close();
+        message.close(true);
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D004 - Formulario «Crear Producto» no realiza el registro, cuando el '+
         'campo «Nombre del producto» tiene 256 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , name='TEST '+'D004 '.repeat(50)+'$';
+          , _name=name.substring(0,5).repeat(51)+'_';
 
-        modal_new.name=name;
+        modal_new.name=_name;
 
         expect(modal_new.name.length).to.equal(255);
-        expect(modal_new.name).to.equal(name.substring(0,255));
+        expect(modal_new.name).to.equal(_name.substring(0,255));
 
         modal_new.close();
     });
@@ -100,58 +118,67 @@ describe('products.domain.js',()=>{
     it('D005 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Código del producto» tiene 0 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , code=''
           , message=modal_new
                 .fill({
-                    name:'D005'
-                  , active:true
-                  , code:code
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:'TEST D005 D005 D005'
+                    name:name
+                  , active:active
+                  , code:''
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "D005" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D006 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Código del producto» tiene 255 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , code='TEST '+'D006 '.repeat(50)
+          , _code=code.substring(0,5).repeat(51)
           , message=modal_new
                 .fill({
-                    name:'D006'
-                  , active:true
-                  , code:code
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:'TEST D006 D006 D006'
+                    name:name
+                  , active:active
+                  , code:_code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "D006" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D007 - Formulario «Crear Producto» no realiza el registro, cuando el '+
        'campo «Código del producto» tiene 256 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , code='TEST '+'D007 '.repeat(50)+'$';
+          , _code=code.substring(0,5).repeat(51)+'_';
 
-        modal_new.code=code;
+        modal_new.code=_code;
 
         expect(modal_new.code.length).to.equal(255);
-        expect(modal_new.code).to.equal(code.substring(0,255));
+        expect(modal_new.code).to.equal(_code.substring(0,255));
 
         modal_new.close();
     });
@@ -159,60 +186,73 @@ describe('products.domain.js',()=>{
     it('D008 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Descripción del producto» tiene 0 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , description=''
           , message=modal_new
                 .fill({
-                    name:'D008'
-                  , active:true
-                  , code:'D008'
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:description
+                    name:name
+                  , active:active
+                  , code:code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:''
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "D008" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D009 - Formulario «Crear Producto» realiza el registro, cuando el '+
        'campo «Descripción del producto» tiene 4000 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , description='TEST '+'D009 '.repeat(799)
+          , _description=description.substring(0,5).repeat(800)
           , message=modal_new
                 .fill({
-                    name:'D009'
-                  , active:true
-                  , code:'D009'
-                  , family:'--None--'
-                  , quantity:true
-                  , revenue:true
-                  , year:2019
-                  , description:description
+                    name:name
+                  , active:active
+                  , code:code
+                  , family:family
+                  , quantity:quantity
+                  , revenue:revenue
+                  , description:_description
                 })
                 .save();
 
         expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Product "D009" was created.');
+        expect(message.text()).to.equal('Product "'+name+'" was created.');
 
         message.close();
+
+        new View()
+            .details()
+            .options()
+            .delete()
+            .confirm();
     });
 
     it('D010 - Formulario «Crear Producto» no realiza el registro, cuando el '+
        'campo «Descripción del producto» tiene 4001 caracteres',()=>{
         let modal_new=Launcher.app('Products').new()
-          , description='TEST '+'D010 '.repeat(799)+'$';
+          , _description=description.substring(0,5).repeat(800)+'_';
 
-        modal_new.description=description;
+        modal_new.description=_description;
 
         expect(modal_new.description.length).to.equal(4000);
-        expect(modal_new.description).to.equal(description.substring(0,4000));
+        expect(modal_new.description).to.equal(_description.substring(0,4000));
 
         modal_new.close();
+    });
+
+    after(()=>{
+        Profile.profile().logout();
     });
 });
 

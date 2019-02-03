@@ -50,11 +50,20 @@ module.exports={
       , messagevalidation:'div.modal-container span.genericError'
       , errorslist:'ul.errorsList li:nth-child(1)'
     }
-
-
   , view:{
-        container:'div.oneRecordHomeFlexipage'
+        container:'div.region-main'
+      , title:'header h1>span'
+      , subtitle:'//span[text()="{0}"]/parent::div/child::div/child::div/span'
+      , options:'ul.branding-actions>li.oneActionsDropDown a'
+      , delete:'div.actionMenu a[title="Delete"]'
+      , tabs:'//span[text()="{0}"]/ancestor::a'
+      , details:'//span[text()="{0}"]/parent::div/following-sibling::div'+
+            '/child::span/child::span'
+      , checked:'//span[text()="{0}"]/parent::div/following-sibling::div'+
+            '/child::span/child::span/child::img'
     }
+
+
   , messages:{
         container:'div.slds-notify'
       , result:'div.slds-notify>lightning-icon>span.slds-assistive-text'

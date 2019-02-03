@@ -14,8 +14,10 @@ class Message{
         return commons.text(patterns.messages.message);
     }
 
-    close(){
-        commons.click(patterns.messages.close);
+    close(timeout=false){
+        if(!timeout){
+            commons.click(patterns.messages.close);
+        }
         commons.wait(patterns.messages.container,true);
     }
 }

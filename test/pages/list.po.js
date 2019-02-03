@@ -13,7 +13,7 @@ class List {
         return new New();
     }
 
-    findRow(name){
+    row(name){
         return new Row(name);
     }
 }

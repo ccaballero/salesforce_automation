@@ -26,6 +26,9 @@ module.exports={
   , text:(selector)=>{
         return browser.getText(selector);
     }
+  , attribute:(selector,attribute)=>{
+        return browser.getAttribute(selector,attribute).trim();
+    }
   , click:(selector)=>{
         browser.waitForVisible(selector,timeout);
         browser.pause(2000);

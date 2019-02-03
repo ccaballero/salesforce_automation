@@ -36,10 +36,6 @@ class New{
                 patterns.modal.input.format('Revenue Scheduling Enabled'));
         }
 
-        if(obj.year){
-            commons.setValue(patterns.modal.input.format('Año'),obj.year);
-        }
-
         if(obj.description){
             this.description=obj.description;
         }

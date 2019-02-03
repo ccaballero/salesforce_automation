@@ -20,9 +20,6 @@ class Row {
         return this;
     }
 
-    edit(){
-    }
-
     delete(){
         commons.click(patterns.row.delete);
         return new Confirmation();

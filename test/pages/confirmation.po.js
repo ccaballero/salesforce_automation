@@ -7,7 +7,7 @@ class Confirmation {
         commons.wait(patterns.modal.container);
     }
 
-    delete(){
+    confirm(){
         commons.click(patterns.modal.delete);
         return new Message();
     }
