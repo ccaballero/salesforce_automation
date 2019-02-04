@@ -81,6 +81,10 @@ class New{
         commons.click(patterns.modal.saveandnew);
         if(successful){
             return new Message();
+        }else{
+            browser.pause(3000);
+            commons.wait(patterns.modal.container);
+            return this;
         }
     }
 

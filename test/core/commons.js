@@ -23,6 +23,13 @@ module.exports={
         browser.waitForVisible(selector,timeout);
         return browser.element(selector);
     }
+  , selects:(selector)=>{
+        browser.waitForVisible(selector,timeout);
+        return browser.elements(selector);
+    }
+  , exist:(selector)=>{
+        return browser.isExisting(selector);
+    }
   , text:(selector)=>{
         return browser.getText(selector);
     }

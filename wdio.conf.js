@@ -5,24 +5,21 @@ exports.config={
   , suites:{
         init:['./test/specs/init.js']
       , login:['./test/specs/login.js']
-      , products:[
-            './test/specs/products/new.start.js'
-          , './test/specs/products/new.functional.js'
-          , './test/specs/products/new.acceptance.js'
-          , './test/specs/products/new.negative.js'
-          , './test/specs/products/new.domain.js'
-        ]
+      , products:['./test/specs/products/*.js']
       , functional:[
-            './test/specs/products/new.functional.js'
+            './test/specs/products/*.functional.js'
         ]
       , acceptance:[
-            './test/specs/products/new.acceptance.js'
+            './test/specs/products/*.acceptance.js'
         ]
       , negative:[
-            './test/specs/products/new.negative.js'
+            './test/specs/products/*.negative.js'
         ]
       , domain:[
-            './test/specs/products/new.domain.js'
+            './test/specs/products/*.domain.js'
+        ]
+      , temp:[
+            './test/specs/products/search.negative.js'
         ]
     }
   , exclude:[]
@@ -31,7 +28,7 @@ exports.config={
   , logLevel:'data'
   , coloredLogs:true
   , deprecationWarnings:true
-  , bail:1
+  , bail:0
   , screenshotPath:'./errors/'
   , baseUrl:'https://www.salesforce.com/'
   , waitforTimeout:30000
@@ -41,7 +38,7 @@ exports.config={
   , reporters:['spec']
   , mochaOpts:{
         ui:'bdd'
-      , timeout:150000
+      , timeout:500000
     }
 };
 

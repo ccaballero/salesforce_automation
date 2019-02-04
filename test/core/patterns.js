@@ -25,12 +25,16 @@ module.exports={
         container:'div.forceListViewManager'
       , banner:'div[role="banner"] nav[role="navigation"]>ol>li>span'
       , new:'div.forceListViewManager a[title="New"]'
+      , empty:'div.emptyContent p'
       , search:'div.slds-page-header input[type="search"]'
+      , clearsearch:'button[data-element-id="searchClear"]'
       , controls:'button[title="{0}"]'
       , item:'//span[text()="{0}"]/parent::a'
     }
   , row:{
-        options:'//a[text()="{0}"]/ancestor::tr/td[last()]/span/div/a'
+        container:'//a[text()="{0}"]'
+      , counter:'table.slds-table>tbody tr'
+      , options:'//a[text()="{0}"]/ancestor::tr/td[last()]/span/div/a'
       , delete:'div.actionMenu a[title="Delete"]'
     }
   , modal:{
@@ -50,6 +54,12 @@ module.exports={
       , messagevalidation:'div.modal-container span.genericError'
       , errorslist:'ul.errorsList li:nth-child(1)'
     }
+  , messages:{
+        container:'div.slds-notify'
+      , result:'div.slds-notify>lightning-icon>span.slds-assistive-text'
+      , message:'div.slds-notify>div.toastContent span.toastMessage'
+      , close:'div.slds-notify button.toastClose'
+    }
   , view:{
         container:'div.region-main'
       , title:'header h1>span'
@@ -64,12 +74,6 @@ module.exports={
     }
 
 
-  , messages:{
-        container:'div.slds-notify'
-      , result:'div.slds-notify>lightning-icon>span.slds-assistive-text'
-      , message:'div.slds-notify>div.toastContent span.toastMessage'
-      , close:'div.slds-notify button.toastClose'
-    }
   , listview:{
         current:'h1>div.triggerLink>div>span.triggerLinkText.selectedListView'
       , select:'h1>div.triggerLink>div>a.slds-button'
@@ -78,8 +82,7 @@ module.exports={
       , change:'//span[text()="{0}"]/parent::a[@role="option"]'
     }
   , table:{
-        counter:'table.slds-table>tbody>tr'
-      , headers:'table.slds-table>thead>tr>th>div>a>span:nth-child(2)'
+        headers:'table.slds-table>thead>tr>th>div>a>span:nth-child(2)'
       , sort:'//span[text()="{0}"]/parent::a'
       , headermenu:'//span[text()="{0}"]/parent::a'+
             '/following-sibling::div/button'

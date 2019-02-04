@@ -36,13 +36,13 @@ entornos:
     npm install
     cp test/config.dist.js test/config.js
     edit test/config.js # y editar las credenciales según el caso.
-    
+
     # Ejecución Standalone
     npm test # para la ejecución en modo standalone.
-    
+
     # Ejecución BrowserStack
     npm run browserstack
-    
+
     # Ejecución Docker
     docker-compose up -d
     npm run docker
@@ -51,18 +51,9 @@ entornos:
 A continuación se presentan los scripts ejecutados y el tiempo que tomó su
 ejecución.
 
-    products/new.functional.js
-      ✓ F002 - Clic en el botón «Nuevo», lanza el formulario de creación de producto
-      ✓ F003 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar y nuevo»
-      ✓ F004 - Formulario «Crear Producto» se cierra al accionar el botón «Cancelar»
-      ✓ F005 - Formulario «Crear Producto» se cierra al accionar el botón «Cerrar esta ventana (X)»
-      ✓ F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se muestra después de registrado un producto
-    
-    5 passing (2m, 29s)
-
     products/new.start.js
       ✓ F001 - Iniciador de Aplicación de salesforce muestra el enlace a «Productos»
-    
+
     1 passing (46s)
 
     products/new.functional.js
@@ -71,17 +62,12 @@ ejecución.
       ✓ F004 - Formulario «Crear Producto» se cierra al accionar el botón «Cancelar»
       ✓ F005 - Formulario «Crear Producto» se cierra al accionar el botón «Cerrar esta ventana (X)»
       ✓ F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se muestra después de registrado un producto
-    
-    5 passing (2m, 38s)
 
-    products/new.acceptance.js
-      ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
-    
-    1 passing (1m, 8s)
+    5 passing (2m, 38s)
 
     products/new.negative.js
       ✓ N001 - Clic en el botón «Guardar» para un formulario vacío envía el mensaje «Revise los errores de esta página»
-    
+
     1 passing (57s)
 
     products/new.domain.js
@@ -95,6 +81,24 @@ ejecución.
       ✓ D008 - Formulario «Crear Producto» realiza el registro, cuando el campo «Descripción del producto» tiene 0 caracteres
       ✓ D009 - Formulario «Crear Producto» realiza el registro, cuando el campo «Descripción del producto» tiene 4000 caracteres
       ✓ D010 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Descripción del producto» tiene 4001 caracteres
-    
+
     10 passing (7m, 57s)
+
+    products/new.acceptance.js
+      ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
+
+    1 passing (1m, 8s)
+
+    products/search.functional.js
+      ✓ F007 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Nombre del producto»
+      ✓ F008 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Código de producto»
+      ✓ F009 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Descripción de producto»
+
+    3 passing (7m, 34s)
+
+    products/search.negative.js
+      ✓ N002 - Mensaje «No hay elementos para mostrar» se muestra cuando la búsqueda no presenta resultados
+
+    1 passing (1m, 54s)
+
 
