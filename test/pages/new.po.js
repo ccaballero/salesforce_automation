@@ -1,10 +1,10 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , Message=require('./message.po');
 
 class New{
     constructor(){
-        commons.wait(patterns.modal.container);
+        Commons.wait(patterns.modal.container);
     }
 
     fill(obj){
@@ -13,7 +13,7 @@ class New{
         }
 
         if(obj.active){
-            commons.click(patterns.modal.input.format('Active'));
+            Commons.click(patterns.modal.input.format('Active'));
         }
 
         if(obj.code){
@@ -21,17 +21,17 @@ class New{
         }
 
         if(obj.family){
-            commons.click(patterns.modal.select.format('Product Family'),1000);
-            commons.click(patterns.modal.option.format(obj.family));
+            Commons.click(patterns.modal.select.format('Product Family'),1000);
+            Commons.click(patterns.modal.option.format(obj.family));
         }
 
         if(obj.quantity){
-            commons.click(
+            Commons.click(
                 patterns.modal.input.format('Quantity Scheduling Enabled'));
         }
 
         if(obj.revenue){
-            commons.click(
+            Commons.click(
                 patterns.modal.input.format('Revenue Scheduling Enabled'));
         }
 
@@ -43,33 +43,34 @@ class New{
     }
 
     set name(name){
-        commons.setValue(patterns.modal.input.format('Product Name'),name);
+        Commons.setValue(patterns.modal.input.format('Product Name'),name);
     }
 
     get name(){
-        return commons.getValue(patterns.modal.input.format('Product Name'));
+        return Commons.getValue(patterns.modal.input.format('Product Name'));
     }
 
     set code(code){
-        commons.setValue(patterns.modal.input.format('Product Code'),code);
+        Commons.setValue(patterns.modal.input.format('Product Code'),code);
     }
 
     get code(){
-        return commons.getValue(patterns.modal.input.format('Product Code'));
+        return Commons.getValue(patterns.modal.input.format('Product Code'));
     }
 
     set description(description){
-        commons.setValue(patterns.modal.textarea.format('Product Description'),
+        Commons.setValue(patterns.modal.textarea.format('Product Description'),
             description);
     }
 
     get description(){
-        return commons.getValue(
+        return Commons.getValue(
             patterns.modal.textarea.format('Product Description'));
     }
 
     save(successful=true){
-        commons.click(patterns.modal.save);
+        Commons.click(patterns.modal.save);
+
         if(successful){
             return new Message();
         }else{
@@ -78,33 +79,33 @@ class New{
     }
 
     saveAndNew(successful=true){
-        commons.click(patterns.modal.saveAndNew);
+        Commons.click(patterns.modal.saveAndNew);
+
         if(successful){
             return new Message();
         }else{
-            browser.pause(3000);
-            commons.wait(patterns.modal.container);
+            Commons.wait(patterns.modal.container,false,3000);
 
             return this;
         }
     }
 
     cancel(){
-        commons.click(patterns.modal.cancel);
-        commons.wait(patterns.modal.container,true);
+        Commons.click(patterns.modal.cancel);
+        Commons.wait(patterns.modal.container,true);
     }
 
     close(){
-        commons.click(patterns.modal.close);
-        commons.wait(patterns.modal.container,true);
+        Commons.click(patterns.modal.close);
+        Commons.wait(patterns.modal.container,true);
     }
 
     messageValidation(){
-        return commons.text(patterns.modal.messageValidation);
+        return Commons.text(patterns.modal.messageValidation);
     }
 
     errorsList(){
-        return commons.text(patterns.modal.errorsList);
+        return Commons.text(patterns.modal.errorsList);
     }
 }
 

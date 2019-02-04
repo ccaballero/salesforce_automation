@@ -31,6 +31,7 @@ module.exports={
       , controls:'button[title="{0}"]'
       , item:'//span[text()="{0}"]/parent::a'
       , element:'//a[text()="{0}"]'
+      , editActions:'//span[text()="{0}"]/parent::button'
     }
   , row:{
         counter:'table.slds-table>tbody tr'
@@ -78,16 +79,15 @@ module.exports={
       , checked:'//span[text()="{0}"]/parent::div/following-sibling::div'+
             '/child::span/child::span/child::img'
     }
-
-
   , listview:{
-        current:'h1>div.triggerLink>div>span.triggerLinkText.selectedListView'
+        title:'div[role="banner"] h1 span:nth-child(2)'
+/*      , current:'h1>div.triggerLink>div>span.triggerLinkText.selectedListView'
       , select:'h1>div.triggerLink>div>a.slds-button'
       , views:'div.scroller>ul[role="listbox"]>li[role="presentation"]'+
             '>a[role="option"]>span'
-      , change:'//span[text()="{0}"]/parent::a[@role="option"]'
+      , change:'//span[text()="{0}"]/parent::a[@role="option"]'*/
     }
-  , table:{
+/*  , table:{
         headers:'table.slds-table>thead>tr>th>div>a>span:nth-child(2)'
       , sort:'//span[text()="{0}"]/parent::a'
       , headerMenu:'//span[text()="{0}"]/parent::a'+
@@ -98,6 +98,6 @@ module.exports={
             '/*[contains(@class,"cellContainer")]/span/*[1]/text()'
       , rowSelect:'//table[contains(@class,"slds-table")]'+
             '/tbody/tr[3]/th/span/a'
-    }
+    }*/
 };
 

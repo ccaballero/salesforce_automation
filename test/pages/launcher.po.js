@@ -1,44 +1,43 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , List=require('./list.po');
 
 class Launcher {
     constructor(){
-        let url=browser.getUrl();
+        let url=Commons.getUrl();
 
         if(url.indexOf('/list')>0){
-            commons.wait(patterns.list.container);
+            Commons.wait(patterns.list.container);
         }else if(url.indexOf('/view')>0){
-            commons.wait(patterns.view.container);
+            Commons.wait(patterns.view.container);
         }else{
-            commons.wait(patterns.setup.container);
+            Commons.wait(patterns.setup.container);
         }
 
         return this;
     }
 
     open(){
-        commons.click(patterns.launcher.menu);
-        commons.wait(patterns.launcher.container);
+        Commons.click(patterns.launcher.menu);
+        Commons.wait(patterns.launcher.container);
 
         return this;
     }
 
     close(){
-        commons.click(patterns.launcher.close);
-        commons.wait(patterns.launcher.container,true);
+        Commons.click(patterns.launcher.close);
+        Commons.wait(patterns.launcher.container,true);
     }
 
     exists(module){
-        commons.wait(patterns.launcher.container);
+        Commons.wait(patterns.launcher.container);
 
-        return commons.select(
-            patterns.launcher.item.format(module)).value!==null;
+        return Commons.select(patterns.launcher.item.format(module))!==null;
     }
 
     item(module){
-        commons.wait(patterns.launcher.container);
-        commons.click(patterns.launcher.item.format(module));
+        Commons.wait(patterns.launcher.container);
+        Commons.click(patterns.launcher.item.format(module));
 
         return new List();
     }

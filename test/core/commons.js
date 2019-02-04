@@ -1,3 +1,4 @@
+/* global browser */
 const timeout=require('../config').timeout;
 
 if(!String.prototype.format){
@@ -10,42 +11,77 @@ if(!String.prototype.format){
     };
 }
 
-module.exports={
-    setValue:(selector,value)=>{
+class Commons {
+    static setUrl(url){
+        browser.url(url);
+    }
+
+    static getUrl(){
+        return browser.getUrl();
+    }
+
+    static getTitle(){
+        return browser.getTitle();
+    }
+
+    static getCookie(cookie){
+        return browser.getCookie(cookie).value;
+    }
+
+    static setValue(selector,value){
         browser.waitForVisible(selector,timeout);
         browser.pause(1000);
         browser.element(selector).setValue(value);
     }
-  , getValue:(selector)=>{
+
+    static getValue(selector){
         return browser.getValue(selector);
     }
-  , select:(selector)=>{
+
+    static select(selector){
         browser.waitForVisible(selector,timeout);
-        return browser.element(selector);
+        return browser.element(selector).value;
     }
-  , selects:(selector)=>{
+
+    static selects(selector){
         browser.waitForVisible(selector,timeout);
-        return browser.elements(selector);
+        return browser.elements(selector).value;
     }
-  , exist:(selector)=>{
+
+    static exist(selector){
         return browser.isExisting(selector);
     }
-  , text:(selector)=>{
+
+    static text(selector){
         return browser.getText(selector);
     }
-  , attribute:(selector,attribute)=>{
+
+    static attribute(selector,attribute){
         return browser.getAttribute(selector,attribute).trim();
     }
-  , click:(selector,delay=0)=>{
+
+    static click(selector,delay=0){
         browser.waitForVisible(selector,timeout);
         browser.pause(2000);
         browser.click(selector);
+
         if(delay){
             browser.pause(delay);
         }
     }
-  , wait:(selector,reverse=false)=>{
+
+    static wait(selector,reverse=false,delay=0){
+        if(delay){
+            browser.pause(delay);
+        }
+
         browser.waitForVisible(selector,timeout,reverse);
     }
-};
+
+    static keys(sequence){
+        browser.keys(sequence);
+    }
+}
+
+module.exports=Commons;
 

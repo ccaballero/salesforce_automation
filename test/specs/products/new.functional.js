@@ -1,5 +1,6 @@
 const expect=require('chai').expect
   , config=require('../../config')
+  , Commons=require('../../core/commons')
   , patterns=require('../../core/patterns')
   , Launcher=require('../../pages/launcher.po')
   , Login=require('../../pages/login.po')
@@ -24,8 +25,7 @@ describe('products/new.functional.js',()=>{
         'de producto',()=>{
         let modal_new=Launcher.app('Products').new();
 
-        expect(browser.element(patterns.modal.container).value)
-            .to.not.equal(null);
+        expect(Commons.select(patterns.modal.container)).to.not.equal(null);
 
         modal_new.close();
     });
@@ -57,7 +57,7 @@ describe('products/new.functional.js',()=>{
             .new()
             .cancel();
 
-        expect(browser.element(patterns.modal.container).value).to.equal(null);
+        expect(Commons.select(patterns.modal.container)).to.equal(null);
     });
 
     it('F005 - Formulario «Crear Producto» se cierra al accionar el '+
@@ -66,7 +66,7 @@ describe('products/new.functional.js',()=>{
             .new()
             .close();
 
-        expect(browser.element(patterns.modal.container).value).to.equal(null);
+        expect(Commons.select(patterns.modal.container)).to.equal(null);
     });
 
     it('F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se '+

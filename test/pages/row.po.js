@@ -1,4 +1,4 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , Confirmation=require('./confirmation.po');
 
@@ -16,15 +16,13 @@ class Row {
     }
 
     options(){
-        commons.click(patterns.row.options.format(this.name));
-        browser.pause(1000);
+        Commons.click(patterns.row.options.format(this.name),1000);
 
         return this;
     }
 
     delete(){
-        commons.click(patterns.row.delete);
-        browser.pause(2000);
+        Commons.click(patterns.row.delete,2000);
 
         return new Confirmation();
     }

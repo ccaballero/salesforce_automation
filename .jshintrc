@@ -1,8 +1,14 @@
 {
-    "esversion":6,
-    "laxcomma":true,
-    "node":true,
-    "undef":true,
-    "unused":true
+    "esversion":6
+  , "laxcomma":true
+  , "node":true
+  , "undef":true
+  , "unused":true
+  , "predef":[
+        "describe"
+      , "before"
+      , "after"
+      , "it"
+    ]
 }
 

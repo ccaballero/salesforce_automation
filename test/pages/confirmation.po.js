@@ -1,26 +1,26 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , Message=require('./message.po');
 
 class Confirmation {
     constructor(){
-        commons.wait(patterns.modal.container);
+        Commons.wait(patterns.modal.container);
     }
 
     confirm(){
-        commons.click(patterns.modal.delete);
+        Commons.click(patterns.modal.delete);
 
         return new Message();
     }
 
     cancel(){
-        commons.click(patterns.modal.cancel);
-        commons.wait(patterns.modal.container,true);
+        Commons.click(patterns.modal.cancel);
+        Commons.wait(patterns.modal.container,true);
     }
 
     close(){
-        commons.click(patterns.modal.close);
-        commons.wait(patterns.modal.container,true);
+        Commons.click(patterns.modal.close);
+        Commons.wait(patterns.modal.container,true);
     }
 }
 

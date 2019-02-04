@@ -1,48 +1,48 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , Confirmation=require('./confirmation.po');
 
 class View {
     constructor(){
-        commons.wait(patterns.view.container);
+        Commons.wait(patterns.view.container);
     }
 
     title(){
-        return commons.text(patterns.view.title);
+        return Commons.text(patterns.view.title);
     }
 
     subtitle(attribute){
-        return commons.text(patterns.view.subtitle.format(attribute));
+        return Commons.text(patterns.view.subtitle.format(attribute));
     }
 
     related(){
-        commons.click(patterns.view.tabs.format('Related'));
+        Commons.click(patterns.view.tabs.format('Related'));
 
         return this;
     }
 
     details(){
-        commons.click(patterns.view.tabs.format('Details'));
+        Commons.click(patterns.view.tabs.format('Details'));
         return this;
     }
 
     data(attribute){
-        return commons.text(patterns.view.details.format(attribute));
+        return Commons.text(patterns.view.details.format(attribute));
     }
 
     checked(attribute){
-        return commons.attribute(
+        return Commons.attribute(
             patterns.view.checked.format(attribute),'class')==='checked';
     }
 
     options(){
-        commons.click(patterns.view.options);
+        Commons.click(patterns.view.options);
 
         return this;
     }
 
     delete(){
-        commons.click(patterns.view.delete);
+        Commons.click(patterns.view.delete);
 
         return new Confirmation();
     }

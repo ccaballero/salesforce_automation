@@ -51,11 +51,25 @@ entornos:
 A continuación se presentan los scripts ejecutados y el tiempo que tomó su
 ejecución.
 
+    ------------------------------------------------------------------
+    init.js
+      ✓ web title
+
+    1 passing (10s)
+
+    ------------------------------------------------------------------
+    login.js
+      ✓ login credentials
+
+    1 passing (40s)
+
+    ------------------------------------------------------------------
     products/new.start.js
       ✓ F001 - Iniciador de Aplicación de salesforce muestra el enlace a «Productos»
 
     1 passing (46s)
 
+    ------------------------------------------------------------------
     products/new.functional.js
       ✓ F002 - Clic en el botón «Nuevo», lanza el formulario de creación de producto
       ✓ F003 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar y nuevo»
@@ -65,11 +79,13 @@ ejecución.
 
     5 passing (2m, 38s)
 
+    ------------------------------------------------------------------
     products/new.negative.js
       ✓ N001 - Clic en el botón «Guardar» para un formulario vacío envía el mensaje «Revise los errores de esta página»
 
     1 passing (57s)
 
+    ------------------------------------------------------------------
     products/new.domain.js
       ✓ D001 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Nombre del producto» tiene 0 caracteres
       ✓ D002 - Formulario «Crear Producto» realiza el registro, cuando el campo «Nombre del producto» tiene 1 carácter
@@ -84,11 +100,13 @@ ejecución.
 
     10 passing (7m, 57s)
 
+    ------------------------------------------------------------------
     products/new.acceptance.js
       ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
 
     1 passing (1m, 8s)
 
+    ------------------------------------------------------------------
     products/search.functional.js
       ✓ F007 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Nombre del producto»
       ✓ F008 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Código de producto»
@@ -96,20 +114,29 @@ ejecución.
 
     3 passing (7m, 34s)
 
+    ------------------------------------------------------------------
     products/search.negative.js
       ✓ N002 - Mensaje «No hay elementos para mostrar» se muestra cuando la búsqueda no presenta resultados
 
     1 passing (1m, 54s)
 
+    ------------------------------------------------------------------
     products/display.start.js
       ✓ F010 - «Mostrar como» posee los elementos: «Tabla» y «Kanban»
 
     1 passing (1m)
 
+    ------------------------------------------------------------------
     products/display.functions.js
       ✓ F011 - Opción «Tabla» en «Mostrar como», muestra los productos en formato tabular
       ✓ F012 - Opción «Kanban» en «Mostrar como», muestra los productos en formato de columnas
 
     2 passing (3m, 34s)
 
+    ------------------------------------------------------------------
+    products/list.acceptance.js
+      ✓ A002 - Vista de Lista «Vistos recientemente» lista los productos registrados
+      ✓ A003 - Tabla de productos registra la información modificada de las celdas editadas
+
+    2 passing (4m, 5s)
 

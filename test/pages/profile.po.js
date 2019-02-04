@@ -1,19 +1,19 @@
-const commons=require('../core/commons')
+const Commons=require('../core/commons')
   , patterns=require('../core/patterns').profile;
 
 class Profile {
     contructor(){
-        commons.wait(patterns.container);
+        Commons.wait(patterns.container);
 
         return this;
     }
 
     logout(){
-        commons.click(patterns.logout);
+        Commons.click(patterns.logout);
     }
 
     static profile(){
-        commons.click(patterns.menu);
+        Commons.click(patterns.menu);
 
         return new Profile();
     }
