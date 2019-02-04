@@ -35,9 +35,9 @@ describe('products/new.domain.js',()=>{
             })
             .save(false);
 
-        expect(modal_new.messagevalidation())
+        expect(modal_new.messageValidation())
             .to.equal('Review the errors on this page.');
-        expect(modal_new.errorslist())
+        expect(modal_new.errorsList())
             .to.equal('These required fields must be completed: Product Name');
 
         modal_new.close();

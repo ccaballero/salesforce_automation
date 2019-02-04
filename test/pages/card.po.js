@@ -2,7 +2,7 @@ const commons=require('../core/commons')
   , patterns=require('../core/patterns')
   , Confirmation=require('./confirmation.po');
 
-class Row {
+class Card {
     constructor(name){
         this.name=name;
     }
@@ -16,19 +16,19 @@ class Row {
     }
 
     options(){
-        commons.click(patterns.row.options.format(this.name));
+        commons.click(patterns.card.options.format(this.name));
         browser.pause(1000);
 
         return this;
     }
 
     delete(){
-        commons.click(patterns.row.delete);
+        commons.click(patterns.card.delete);
         browser.pause(2000);
 
         return new Confirmation();
     }
 }
 
-module.exports=Row;
+module.exports=Card;
 

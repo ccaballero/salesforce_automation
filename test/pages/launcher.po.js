@@ -20,6 +20,7 @@ class Launcher {
     open(){
         commons.click(patterns.launcher.menu);
         commons.wait(patterns.launcher.container);
+
         return this;
     }
 

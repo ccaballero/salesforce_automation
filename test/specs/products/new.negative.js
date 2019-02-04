@@ -18,7 +18,7 @@ describe('products/new.negative.js',()=>{
             .fill({})
             .save(false);
 
-        expect(modal_new.messagevalidation())
+        expect(modal_new.messageValidation())
             .to.equal('Review the errors on this page.');
 
         modal_new.close();

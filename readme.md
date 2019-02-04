@@ -101,4 +101,15 @@ ejecución.
 
     1 passing (1m, 54s)
 
+    products/display.start.js
+      ✓ F010 - «Mostrar como» posee los elementos: «Tabla» y «Kanban»
+
+    1 passing (1m)
+
+    products/display.functions.js
+      ✓ F011 - Opción «Tabla» en «Mostrar como», muestra los productos en formato tabular
+      ✓ F012 - Opción «Kanban» en «Mostrar como», muestra los productos en formato de columnas
+
+    2 passing (3m, 34s)
+
 

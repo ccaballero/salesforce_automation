@@ -1,10 +1,8 @@
 const expect=require('chai').expect
   , config=require('../../config')
-  , patterns=require('../../core/patterns')
   , Launcher=require('../../pages/launcher.po')
   , Login=require('../../pages/login.po')
   , Profile=require('../../pages/profile.po')
-  , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
 describe('products/search.functional.js',()=>{
@@ -28,7 +26,7 @@ describe('products/search.functional.js',()=>{
               , code:code
               , description:description
             })
-            .saveandnew(false)
+            .saveAndNew(false)
             .fill({
                 name:name+' 02'
               , active:active
@@ -41,11 +39,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('01');
 
-        expect(list.totalrows()).to.equal(1);
+        expect(list.totalRows()).to.equal(1);
         expect(list.row(name+' 01')).to.not.equal(null);
         expect(list.row(name+' 02')).to.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 01')
             .options()
             .delete()
@@ -55,11 +53,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('02');
 
-        expect(list.totalrows()).to.equal(1);
+        expect(list.totalRows()).to.equal(1);
         expect(list.row(name+' 01')).to.equal(null);
         expect(list.row(name+' 02')).to.not.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 02')
             .options()
             .delete()
@@ -77,7 +75,7 @@ describe('products/search.functional.js',()=>{
               , code:code+' CODE'
               , description:description
             })
-            .saveandnew(false)
+            .saveAndNew(false)
             .fill({
                 name:name+' 02'
               , active:active
@@ -90,11 +88,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('CODE');
 
-        expect(list.totalrows()).to.equal(1);
+        expect(list.totalRows()).to.equal(1);
         expect(list.row(name+' 01')).to.not.equal(null);
         expect(list.row(name+' 02')).to.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 01')
             .options()
             .delete()
@@ -104,11 +102,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('FUNCTIONAL');
 
-        expect(list.totalrows()).to.equal(1);
+        expect(list.totalRows()).to.equal(1);
         expect(list.row(name+' 01')).to.equal(null);
         expect(list.row(name+' 02')).to.not.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 02')
             .options()
             .delete()
@@ -126,7 +124,7 @@ describe('products/search.functional.js',()=>{
               , code:code
               , description:description
             })
-            .saveandnew(false)
+            .saveAndNew(false)
             .fill({
                 name:name+' 02'
               , active:active
@@ -139,11 +137,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('DESCRIPTION');
 
-        expect(list.totalrows()).to.equal(2);
+        expect(list.totalRows()).to.equal(2);
         expect(list.row(name+' 01')).to.not.equal(null);
         expect(list.row(name+' 02')).to.not.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 01')
             .options()
             .delete()
@@ -153,11 +151,11 @@ describe('products/search.functional.js',()=>{
             .refresh()
             .search('DESCRIPTION');
 
-        expect(list.totalrows()).to.equal(1);
+        expect(list.totalRows()).to.equal(1);
         expect(list.row(name+' 01')).to.equal(null);
         expect(list.row(name+' 02')).to.not.equal(null);
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name+' 02')
             .options()
             .delete()

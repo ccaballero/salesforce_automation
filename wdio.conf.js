@@ -19,7 +19,7 @@ exports.config={
             './test/specs/products/*.domain.js'
         ]
       , temp:[
-            './test/specs/products/search.negative.js'
+            './test/specs/products/display.functions.js'
         ]
     }
   , exclude:[]

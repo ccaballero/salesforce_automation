@@ -14,6 +14,7 @@ class Profile {
 
     static profile(){
         commons.click(patterns.menu);
+
         return new Profile();
     }
 }

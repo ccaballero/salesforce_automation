@@ -9,6 +9,7 @@ class Confirmation {
 
     confirm(){
         commons.click(patterns.modal.delete);
+
         return new Message();
     }
 

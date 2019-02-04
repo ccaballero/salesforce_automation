@@ -77,13 +77,14 @@ class New{
         }
     }
 
-    saveandnew(successful=true){
-        commons.click(patterns.modal.saveandnew);
+    saveAndNew(successful=true){
+        commons.click(patterns.modal.saveAndNew);
         if(successful){
             return new Message();
         }else{
             browser.pause(3000);
             commons.wait(patterns.modal.container);
+
             return this;
         }
     }
@@ -98,12 +99,12 @@ class New{
         commons.wait(patterns.modal.container,true);
     }
 
-    messagevalidation(){
-        return commons.text(patterns.modal.messagevalidation);
+    messageValidation(){
+        return commons.text(patterns.modal.messageValidation);
     }
 
-    errorslist(){
-        return commons.text(patterns.modal.errorslist);
+    errorsList(){
+        return commons.text(patterns.modal.errorsList);
     }
 }
 

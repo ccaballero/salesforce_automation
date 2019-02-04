@@ -1,10 +1,8 @@
 const expect=require('chai').expect
   , config=require('../../config')
-  , patterns=require('../../core/patterns')
   , Launcher=require('../../pages/launcher.po')
   , Login=require('../../pages/login.po')
   , Profile=require('../../pages/profile.po')
-  , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
 describe('products/search.negative.js',()=>{
@@ -34,9 +32,9 @@ describe('products/search.negative.js',()=>{
             .refresh()
             .search('not found');
 
-        expect(list.emptymessage()).to.equal('No items to display.');
+        expect(list.emptyMessage()).to.equal('No items to display.');
 
-        list.clearsearch()
+        list.clearSearch()
             .row(name)
             .options()
             .delete()

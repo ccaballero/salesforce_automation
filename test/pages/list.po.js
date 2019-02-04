@@ -1,5 +1,6 @@
 const commons=require('../core/commons')
   , patterns=require('../core/patterns')
+  , Card=require('./card.po')
   , New=require('./new.po')
   , Row=require('./row.po');
 
@@ -10,11 +11,12 @@ class List {
 
     new(){
         commons.click(patterns.list.new);
+
         return new New();
     }
 
     row(name){
-        if(commons.exist(patterns.row.container.format(name))){
+        if(commons.exist(patterns.list.element.format(name))){
             return new Row(name);
         }else{
             return null;
@@ -29,19 +31,19 @@ class List {
         return this;
     }
 
-    clearsearch(){
-        commons.click(patterns.list.clearsearch);
+    clearSearch(){
+        commons.click(patterns.list.clearSearch);
         commons.click(patterns.list.container);
         browser.pause(8000);
 
         return this;
     }
 
-    emptymessage(){
+    emptyMessage(){
         return commons.text(patterns.list.empty);
     }
 
-    totalrows(){
+    totalRows(){
         return commons.selects(patterns.row.counter).value.length;
     }
 
@@ -50,6 +52,36 @@ class List {
         browser.pause(5000);
 
         return this;
+    }
+
+    displayAs(mode='Table'){
+        commons.click(patterns.list.controls.format('Display as '+mode));
+        browser.pause(1000);
+
+        return this;
+    }
+
+    displayTable(){
+        commons.click(patterns.list.item.format('Table'));
+        return this;
+    }
+
+    displayKanban(){
+        commons.click(patterns.list.item.format('Kanban'));
+        return this;
+    }
+
+    totalCards(column){
+        return commons.selects(
+            patterns.card.counter.format(column)).value.length;
+    }
+
+    card(name){
+        if(commons.exist(patterns.list.element.format(name))){
+            return new Card(name);
+        }else{
+            return null;
+        }
     }
 }
 

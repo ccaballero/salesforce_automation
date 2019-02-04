@@ -17,6 +17,7 @@ class View {
 
     related(){
         commons.click(patterns.view.tabs.format('Related'));
+
         return this;
     }
 
@@ -36,11 +37,13 @@ class View {
 
     options(){
         commons.click(patterns.view.options);
+
         return this;
     }
 
     delete(){
         commons.click(patterns.view.delete);
+
         return new Confirmation();
     }
 }

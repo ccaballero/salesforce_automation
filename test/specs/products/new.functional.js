@@ -37,7 +37,7 @@ describe('products/new.functional.js',()=>{
                 .fill({
                     name:name
                 })
-                .saveandnew();
+                .saveAndNew();
 
         expect(message.result()).to.equal('success');
         expect(message.text()).to.equal('Product "'+name+'" was created.');
