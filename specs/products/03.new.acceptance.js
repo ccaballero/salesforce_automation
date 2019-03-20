@@ -6,7 +6,7 @@ const expect=require('chai').expect
   , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
-describe('products/new.acceptance.js',()=>{
+describe('products/03.new.acceptance.js',()=>{
     var name='products.new.acceptance';
 
     before(()=>{

@@ -6,7 +6,7 @@ const expect=require('chai').expect
   , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
-describe('products/new.domain.js',()=>{
+describe('products/05.new.domain.js',()=>{
     var name='products.new.domain'
       , active=true
       , code='DOMAIN'

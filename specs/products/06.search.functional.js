@@ -5,7 +5,7 @@ const expect=require('chai').expect
   , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products/search.functional.js',()=>{
+describe('products/06.search.functional.js',()=>{
     var name='products.search.functional'
       , active=true
       , code='FUNCTIONAL'

@@ -5,7 +5,7 @@ const expect=require('chai').expect
   , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products/new.negative.js',()=>{
+describe('products/04.new.negative.js',()=>{
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });

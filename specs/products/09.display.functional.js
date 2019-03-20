@@ -5,7 +5,7 @@ const expect=require('chai').expect
   , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products/display.functions.js',()=>{
+describe('products/09.display.functions.js',()=>{
     var name='products.display.functions'
       , active=true
       , code='FUNCTIONS'

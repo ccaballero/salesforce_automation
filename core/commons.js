@@ -40,11 +40,13 @@ class Commons {
 
     static select(selector){
         browser.waitForVisible(selector,timeout);
+
         return browser.element(selector).value;
     }
 
     static selects(selector){
         browser.waitForVisible(selector,timeout);
+
         return browser.elements(selector).value;
     }
 
@@ -53,6 +55,8 @@ class Commons {
     }
 
     static text(selector){
+        browser.waitForVisible(selector,timeout);
+
         return browser.getText(selector);
     }
 
@@ -68,6 +72,10 @@ class Commons {
         if(delay){
             browser.pause(delay);
         }
+    }
+
+    static pause(delay){
+        browser.pause(delay);
     }
 
     static wait(selector,reverse=false,delay=0){

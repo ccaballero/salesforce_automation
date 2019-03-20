@@ -1,26 +1,16 @@
 exports.config={
     specs:[
-        './test/specs/**/*.js'
+        './specs/**/*.js'
     ]
   , suites:{
-        init:['./test/specs/init.js']
-      , login:['./test/specs/login.js']
-      , products:['./test/specs/products/*.js']
-      , functional:[
-            './test/specs/products/*.functional.js'
-        ]
-      , acceptance:[
-            './test/specs/products/*.acceptance.js'
-        ]
-      , negative:[
-            './test/specs/products/*.negative.js'
-        ]
-      , domain:[
-            './test/specs/products/*.domain.js'
-        ]
-      , temp:[
-            './test/specs/products/list.acceptance.js'
-        ]
+        init:['./specs/init.js']
+      , login:['./specs/login.js']
+      , products:['./specs/products/*.js']
+      , functional:['./specs/products/*.functional.js']
+      , acceptance:['./specs/products/*.acceptance.js']
+      , negative:['./specs/products/*.negative.js']
+      , domain:['./specs/products/*.domain.js']
+      , temp:['./specs/products/11.show.negative.js']
     }
   , exclude:[]
   , maxInstances:1

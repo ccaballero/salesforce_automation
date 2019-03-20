@@ -8,7 +8,7 @@ const expect=require('chai').expect
   , View=require('../../pages/view.po')
   , credentials=config.credentials.administrator;
 
-describe('products/new.functional.js',()=>{
+describe('products/02.new.functional.js',()=>{
     var name='products.new.functional'
       , active=true
       , code='FUNCTIONAL'

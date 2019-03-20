@@ -32,6 +32,7 @@ module.exports={
       , item:'//span[text()="{0}"]/parent::a'
       , element:'//a[text()="{0}"]'
       , editActions:'//span[text()="{0}"]/parent::button'
+      , updated:'div.forceListViewManagerHeader>div:nth-child(2)>div>p span:nth-child(2)'
     }
   , row:{
         counter:'table.slds-table>tbody tr'

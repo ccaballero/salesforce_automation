@@ -31,11 +31,11 @@ entornos:
 
 ## Configuración del ambiente
 
-    git clone https://github.com/DiplomadoControlCalidad01/sfdc-wdio-tests-01.git
-    cd sfdc-wdio-tests-01/
+    git clone https://github.com/ccaballero/salesforce_automation.git
+    cd salesforce_automation/
     npm install
-    cp test/config.dist.js test/config.js
-    edit test/config.js # y editar las credenciales según el caso.
+    cp config.dist.js config.js
+    edit config.js # y editar las credenciales según el caso.
 
     # Ejecución Standalone
     npm test # para la ejecución en modo standalone.
@@ -64,13 +64,13 @@ ejecución.
     1 passing (40s)
 
     ------------------------------------------------------------------
-    products/new.start.js
+    products/01.new.start.js
       ✓ F001 - Iniciador de Aplicación de salesforce muestra el enlace a «Productos»
 
     1 passing (46s)
 
     ------------------------------------------------------------------
-    products/new.functional.js
+    products/02.new.functional.js
       ✓ F002 - Clic en el botón «Nuevo», lanza el formulario de creación de producto
       ✓ F003 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar y nuevo»
       ✓ F004 - Formulario «Crear Producto» se cierra al accionar el botón «Cancelar»
@@ -80,13 +80,19 @@ ejecución.
     5 passing (2m, 38s)
 
     ------------------------------------------------------------------
-    products/new.negative.js
+    products/03.new.acceptance.js
+      ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
+
+    1 passing (1m, 8s)
+
+    ------------------------------------------------------------------
+    products/04.new.negative.js
       ✓ N001 - Clic en el botón «Guardar» para un formulario vacío envía el mensaje «Revise los errores de esta página»
 
     1 passing (57s)
 
     ------------------------------------------------------------------
-    products/new.domain.js
+    products/05.new.domain.js
       ✓ D001 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Nombre del producto» tiene 0 caracteres
       ✓ D002 - Formulario «Crear Producto» realiza el registro, cuando el campo «Nombre del producto» tiene 1 carácter
       ✓ D003 - Formulario «Crear Producto» realiza el registro, cuando el campo «Nombre del producto» tiene 255 caracteres
@@ -101,13 +107,7 @@ ejecución.
     10 passing (7m, 57s)
 
     ------------------------------------------------------------------
-    products/new.acceptance.js
-      ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
-
-    1 passing (1m, 8s)
-
-    ------------------------------------------------------------------
-    products/search.functional.js
+    products/06.search.functional.js
       ✓ F007 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Nombre del producto»
       ✓ F008 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Código de producto»
       ✓ F009 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Descripción de producto»
@@ -115,23 +115,30 @@ ejecución.
     3 passing (7m, 34s)
 
     ------------------------------------------------------------------
-    products/search.negative.js
+    products/07.search.negative.js
       ✓ N002 - Mensaje «No hay elementos para mostrar» se muestra cuando la búsqueda no presenta resultados
 
     1 passing (1m, 54s)
 
     ------------------------------------------------------------------
-    products/display.start.js
+    products/08.display.start.js
       ✓ F010 - «Mostrar como» posee los elementos: «Tabla» y «Kanban»
 
     1 passing (1m)
 
     ------------------------------------------------------------------
-    products/display.functions.js
+    products/09.display.functions.js
       ✓ F011 - Opción «Tabla» en «Mostrar como», muestra los productos en formato tabular
       ✓ F012 - Opción «Kanban» en «Mostrar como», muestra los productos en formato de columnas
 
     2 passing (3m, 34s)
+
+    ------------------------------------------------------------------
+    products/10.display.functions.js
+      ✓ F013 - Botón «Actualizar», reenvía las peticiones de consulta al servidor
+
+    1 passing (2m, 14s)
+
 
     ------------------------------------------------------------------
     products/list.acceptance.js

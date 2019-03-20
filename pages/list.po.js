@@ -42,11 +42,13 @@ class List {
 
     displayTable(){
         Commons.click(patterns.list.item.format('Table'));
+
         return this;
     }
 
     displayKanban(){
         Commons.click(patterns.list.item.format('Kanban'));
+
         return this;
     }
 
@@ -64,6 +66,12 @@ class List {
 
     emptyMessage(){
         return Commons.text(patterns.list.empty);
+    }
+
+    updatedInfo(delay=0){
+        Commons.pause(delay);
+
+        return Commons.text(patterns.list.updated);
     }
 
     row(name){

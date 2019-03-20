@@ -5,7 +5,7 @@ const expect=require('chai').expect
   , Profile=require('../../pages/profile.po')
   , credentials=config.credentials.administrator;
 
-describe('products/search.negative.js',()=>{
+describe('products/07.search.negative.js',()=>{
     var name='products.search.negative'
       , active=true
       , code='NEGATIVE'
