@@ -3,6 +3,7 @@ const Commons=require('../core/commons')
   , Card=require('./card.po')
   , Message=require('./message.po')
   , New=require('./new.po')
+  , NewListView=require('./newlistview.po')
   , Row=require('./row.po');
 
 class List {
@@ -50,6 +51,18 @@ class List {
         Commons.click(patterns.list.item.format('Kanban'));
 
         return this;
+    }
+
+    viewControls(){
+        Commons.click(patterns.list.controls.format('List View Controls'),1000);
+
+        return this;
+    }
+
+    viewControlsNew(){
+        Commons.click(patterns.list.item.format('New'));
+
+        return new NewListView();
     }
 
     refresh(){

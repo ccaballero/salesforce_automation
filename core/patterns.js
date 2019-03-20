@@ -32,7 +32,8 @@ module.exports={
       , item:'//span[text()="{0}"]/parent::a'
       , element:'//a[text()="{0}"]'
       , editActions:'//span[text()="{0}"]/parent::button'
-      , updated:'div.forceListViewManagerHeader>div:nth-child(2)>div>p span:nth-child(2)'
+      , updated:'div.forceListViewManagerHeader>div:nth-child(2)>div>'+
+            'p span:nth-child(2)'
     }
   , row:{
         counter:'table.slds-table>tbody tr'
@@ -49,7 +50,7 @@ module.exports={
         container:'div.modal-container'
       , input:'//span[text()="{0}"]/parent::label'+
             '/following-sibling::input'
-      , select:'//span[text()="Product Family"]/parent::span'+
+      , select:'//span[text()="{0}"]/parent::span'+
             '/following-sibling::div/child::div/child::div/child::div/child::a'
       , textarea:'//span[text()="{0}"]/parent::label'+
             '/following-sibling::textarea'
@@ -82,12 +83,12 @@ module.exports={
     }
   , listview:{
         title:'div[role="banner"] h1 span:nth-child(2)'
-/*      , current:'h1>div.triggerLink>div>span.triggerLinkText.selectedListView'
-      , select:'h1>div.triggerLink>div>a.slds-button'
-      , views:'div.scroller>ul[role="listbox"]>li[role="presentation"]'+
-            '>a[role="option"]>span'
-      , change:'//span[text()="{0}"]/parent::a[@role="option"]'*/
     }
+  , newlistview:{
+        input:'//label[text()="{0}"]/following-sibling::div/input'
+      , save:'button.test-confirmButton'
+    }
+
 /*  , table:{
         headers:'table.slds-table>thead>tr>th>div>a>span:nth-child(2)'
       , sort:'//span[text()="{0}"]/parent::a'
