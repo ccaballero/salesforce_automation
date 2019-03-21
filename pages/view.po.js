@@ -5,6 +5,8 @@ const Commons=require('../core/commons')
 class View {
     constructor(){
         Commons.wait(patterns.view.container);
+
+        return this;
     }
 
     title(){
@@ -23,6 +25,7 @@ class View {
 
     details(){
         Commons.click(patterns.view.tabs.format('Details'));
+
         return this;
     }
 

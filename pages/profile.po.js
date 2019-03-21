@@ -2,7 +2,7 @@ const Commons=require('../core/commons')
   , patterns=require('../core/patterns').profile;
 
 class Profile {
-    contructor(){
+    constructor(){
         Commons.wait(patterns.container);
 
         return this;

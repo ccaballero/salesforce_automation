@@ -5,6 +5,8 @@ const Commons=require('../core/commons')
 class NewListView{
     constructor(){
         Commons.wait(patterns.modal.container);
+
+        return this;
     }
 
     fill(obj){

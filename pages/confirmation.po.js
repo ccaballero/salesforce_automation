@@ -5,6 +5,8 @@ const Commons=require('../core/commons')
 class Confirmation {
     constructor(){
         Commons.wait(patterns.modal.container);
+
+        return this;
     }
 
     confirm(){

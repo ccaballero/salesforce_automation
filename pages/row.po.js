@@ -5,6 +5,8 @@ const Commons=require('../core/commons')
 class Row {
     constructor(name){
         this.name=name;
+
+        return this;
     }
 
     set name(name){

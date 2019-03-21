@@ -4,6 +4,8 @@ const Commons=require('../core/commons')
 class Message{
     constructor(){
         Commons.wait(patterns.messages.container);
+
+        return this;
     }
 
     result(){
@@ -18,6 +20,7 @@ class Message{
         if(!timeout){
             Commons.click(patterns.messages.close);
         }
+
         Commons.wait(patterns.messages.container,true);
     }
 }

@@ -9,6 +9,8 @@ const Commons=require('../core/commons')
 class List {
     constructor(){
         Commons.wait(patterns.list.container);
+
+        return this;
     }
 
     currentView(){

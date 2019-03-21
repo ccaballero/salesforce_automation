@@ -5,6 +5,8 @@ const Commons=require('../core/commons')
 class Card {
     constructor(name){
         this.name=name;
+
+        return this;
     }
 
     set name(name){
