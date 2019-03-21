@@ -19,7 +19,7 @@ exports.config={
   , coloredLogs:true
   , deprecationWarnings:true
   , bail:0
-  , screenshotPath:'./errors/'
+  , screenshotPath:'./Errors/'
   , baseUrl:'https://www.salesforce.com/'
   , waitforTimeout:30000
   , connectionRetryTimeout:90000
