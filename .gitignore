@@ -16,6 +16,6 @@ bower_components
 package-lock.json
 
 # webdriver
-errors/
+Errors/
 config.js
 
