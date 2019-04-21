@@ -1,23 +1,28 @@
-const Commons=require('../core/commons')
-  , patterns=require('../core/patterns').profile;
+const Common=require('../Utils/Common');
 
 class Profile {
     constructor(){
-        Commons.wait(patterns.container);
+        Common.wait(Profile.patterns.container);
 
         return this;
     }
 
     logout(){
-        Commons.click(patterns.logout);
+        Common.click(Profile.patterns.logout);
     }
 
     static profile(){
-        Commons.click(patterns.menu);
+        Common.click(Profile.patterns.menu);
 
         return new Profile();
     }
 }
+
+Profile.patterns={
+    container:'div.userProfilePanel.active'
+  , menu:'button.branding-userProfile-button'
+  , logout:'a.logout'
+};
 
 module.exports=Profile;
 

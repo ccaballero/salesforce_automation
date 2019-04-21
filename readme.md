@@ -51,99 +51,36 @@ entornos:
 A continuación se presentan los scripts ejecutados y el tiempo que tomó su
 ejecución.
 
-    ------------------------------------------------------------------
-    init.js
-      ✓ web title
-
-    1 passing (10s)
-
-    ------------------------------------------------------------------
-    login.js
-      ✓ login credentials
-
-    1 passing (40s)
-
-    ------------------------------------------------------------------
-    products/01.new.start.js
-      ✓ F001 - Iniciador de Aplicación de salesforce muestra el enlace a «Productos»
-
-    1 passing (46s)
-
-    ------------------------------------------------------------------
-    products/02.new.functional.js
-      ✓ F002 - Clic en el botón «Nuevo», lanza el formulario de creación de producto
-      ✓ F003 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar y nuevo»
-      ✓ F004 - Formulario «Crear Producto» se cierra al accionar el botón «Cancelar»
-      ✓ F005 - Formulario «Crear Producto» se cierra al accionar el botón «Cerrar esta ventana (X)»
-      ✓ F006 - Mensaje «Se creó Producto "<Nombre de Producto>"» se muestra después de registrado un producto
-
-    5 passing (2m, 38s)
-
-    ------------------------------------------------------------------
-    products/03.new.acceptance.js
-      ✓ A001 - Producto es registrado con los valores obligatorios establecidos después de accionado el botón «Guardar»
-
-    1 passing (1m, 8s)
-
-    ------------------------------------------------------------------
-    products/04.new.negative.js
-      ✓ N001 - Clic en el botón «Guardar» para un formulario vacío envía el mensaje «Revise los errores de esta página»
-
-    1 passing (57s)
-
-    ------------------------------------------------------------------
-    products/05.new.domain.js
-      ✓ D001 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Nombre del producto» tiene 0 caracteres
-      ✓ D002 - Formulario «Crear Producto» realiza el registro, cuando el campo «Nombre del producto» tiene 1 carácter
-      ✓ D003 - Formulario «Crear Producto» realiza el registro, cuando el campo «Nombre del producto» tiene 255 caracteres
-      ✓ D004 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Nombre del producto» tiene 256 caracteres
-      ✓ D005 - Formulario «Crear Producto» realiza el registro, cuando el campo «Código del producto» tiene 0 caracteres
-      ✓ D006 - Formulario «Crear Producto» realiza el registro, cuando el campo «Código del producto» tiene 255 caracteres
-      ✓ D007 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Código del producto» tiene 256 caracteres
-      ✓ D008 - Formulario «Crear Producto» realiza el registro, cuando el campo «Descripción del producto» tiene 0 caracteres
-      ✓ D009 - Formulario «Crear Producto» realiza el registro, cuando el campo «Descripción del producto» tiene 4000 caracteres
-      ✓ D010 - Formulario «Crear Producto» no realiza el registro, cuando el campo «Descripción del producto» tiene 4001 caracteres
-
-    10 passing (7m, 57s)
-
-    ------------------------------------------------------------------
-    products/06.search.functional.js
-      ✓ F007 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Nombre del producto»
-      ✓ F008 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Código de producto»
-      ✓ F009 - «Buscar en esta lista...» filtra los elementos a partir de contenido en el campo «Descripción de producto»
-
-    3 passing (7m, 34s)
-
-    ------------------------------------------------------------------
-    products/07.search.negative.js
-      ✓ N002 - Mensaje «No hay elementos para mostrar» se muestra cuando la búsqueda no presenta resultados
-
-    1 passing (1m, 54s)
-
-    ------------------------------------------------------------------
-    products/08.display.start.js
-      ✓ F010 - «Mostrar como» posee los elementos: «Tabla» y «Kanban»
-
-    1 passing (1m)
-
-    ------------------------------------------------------------------
-    products/09.display.functions.js
-      ✓ F011 - Opción «Tabla» en «Mostrar como», muestra los productos en formato tabular
-      ✓ F012 - Opción «Kanban» en «Mostrar como», muestra los productos en formato de columnas
-
-    2 passing (3m, 34s)
-
-    ------------------------------------------------------------------
-    products/10.display.functions.js
-      ✓ F013 - Botón «Actualizar», reenvía las peticiones de consulta al servidor
-
-    1 passing (2m, 14s)
-
-
-    ------------------------------------------------------------------
-    products/list.acceptance.js
-      ✓ A002 - Vista de Lista «Vistos recientemente» lista los productos registrados
-      ✓ A003 - Tabla de productos registra la información modificada de las celdas editadas
-
-    2 passing (4m, 5s)
+    | Script        | Ejecución   |
+    | ------------- |:-----------:|
+    | 001.F001.js   |     45s     |
+    | 002.F002.js   |     58s     |
+    | 003.A001.js   |   1m24s     |
+    | 004.F003.js   |   1m09s     |
+    | 005.F004.js   |     59s     |
+    | 006.F005.js   |     55s     |
+    | 007.N001.js   |   1m05s     |
+    | 008.F006.js   |   1m31s     |
+    | 009.D001.js   |   1m21s     |
+    | 010.D002.js   |   1m28s     |
+    | 011.D003.js   |   1m40s     |
+    | 012.D004.js   |   1m02s     |
+    | 013.D005.js   |   1m32s     |
+    | 014.D006.js   |   1m38s     |
+    | 015.D007.js   |   1m02s     |
+    | 016.D008.js   |   1m18s     |
+    | 017.D009.js   |   2m20s     |
+    | 018.D010.js   |   2m        |
+    | 019.F007.js   |   2m46s     |
+    | 020.F008.js   |   2m52s     |
+    | 021.F009.js   |   2m49s     |
+    | 022.N002.js   |   1m58s     |
+    | 023.F010.js   |     59s     |
+    | 024.F011.js   |   2m04s     |
+    | 025.F012.js   |   1m56s     |
+    | 026.F013.js   |   2m11s     |
+    | 027.N003.js   |   2m14s     |
+    | 028.F014.js   |   1m57s     |
+    | 035.A002.js   |   2m08s     |
+    | 049.A003.js   |   2m49s     |
 

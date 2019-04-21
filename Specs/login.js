@@ -1,25 +1,27 @@
 const expect=require('chai').expect
   , credentials=require('../config').credentials.administrator
-  , Commons=require('../core/commons')
-  , Login=require('../pages/login.po')
-  , Launcher=require('../pages/launcher.po')
-  , Profile=require('../pages/profile.po');
+  , Common=require('../Utils/Common')
+  , Launcher=require('../PageObjects/Launcher.po')
+  , Login=require('../PageObjects/Login.po')
+  , Profile=require('../PageObjects/Profile.po');
 
 describe('login.js',()=>{
     it('login credentials',()=>{
         Login.loginAs(credentials.username,credentials.password);
 
+        // wait for main container loads
         new Launcher();
-        expect(Commons.getTitle()).to.be.equal('Home | Salesforce');
 
-        expect(Commons.getCookie('sfdc-stream')).to.be.a('string');
-        expect(Commons.getCookie('sid_Client')).to.be.a('string');
-        expect(Commons.getCookie('sid')).to.be.a('string');
-        expect(Commons.getCookie('BrowserId')).to.be.a('string');
-        expect(Commons.getCookie('clientSrc')).to.be.a('string');
-        expect(Commons.getCookie('inst')).to.be.a('string');
-        expect(Commons.getCookie('force-proxy-stream')).to.be.a('string');
-        expect(Commons.getCookie('force-stream')).to.be.a('string');
+        expect(Common.getTitle()).to.be.equal('Home | Salesforce');
+
+        expect(Common.getCookie('sfdc-stream')).to.be.a('string');
+        expect(Common.getCookie('sid_Client')).to.be.a('string');
+        expect(Common.getCookie('sid')).to.be.a('string');
+        expect(Common.getCookie('BrowserId')).to.be.a('string');
+        expect(Common.getCookie('clientSrc')).to.be.a('string');
+        expect(Common.getCookie('inst')).to.be.a('string');
+        expect(Common.getCookie('force-proxy-stream')).to.be.a('string');
+        expect(Common.getCookie('force-stream')).to.be.a('string');
     });
 
     after(()=>{

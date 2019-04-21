@@ -1,51 +1,59 @@
-const Commons=require('../core/commons')
-  , patterns=require('../core/patterns')
-  , List=require('./list.po');
+const Common=require('../Utils/Common')
+  , List=require('./List.po')
+  , Setup=require('./Setup.po')
+  , View=require('./View.po');
 
 class Launcher {
     constructor(){
-        let url=Commons.getUrl();
+        let url=Common.getUrl();
 
         if(url.indexOf('/list')>0){
-            Commons.wait(patterns.list.container);
+            Common.wait(List.patterns.container);
         }else if(url.indexOf('/view')>0){
-            Commons.wait(patterns.view.container);
+            Common.wait(View.patterns.container);
         }else{
-            Commons.wait(patterns.setup.container);
+            Common.wait(Setup.patterns.container);
         }
 
         return this;
     }
 
     open(){
-        Commons.click(patterns.launcher.menu);
-        Commons.wait(patterns.launcher.container);
+        Common.click(Launcher.patterns.menu);
+        Common.wait(Launcher.patterns.container);
 
         return this;
     }
 
     close(){
-        Commons.click(patterns.launcher.close);
-        Commons.wait(patterns.launcher.container,true);
+        Common.click(Launcher.patterns.close);
+        Common.wait(Launcher.patterns.container,true);
     }
 
     exists(module){
-        Commons.wait(patterns.launcher.container);
+        Common.wait(Launcher.patterns.container);
 
-        return Commons.select(patterns.launcher.item.format(module))!==null;
+        return Common.select(Launcher.patterns.item.format(module))!==null;
     }
 
     item(module){
-        Commons.wait(patterns.launcher.container);
-        Commons.click(patterns.launcher.item.format(module));
+        Common.wait(Launcher.patterns.container);
+        Common.click(Launcher.patterns.item.format(module));
 
-        return new List();
+        return new List(module);
     }
 
     static app(module){
         return new Launcher().open().item(module);
     }
 }
+
+Launcher.patterns={
+    container:'div.modal-container'
+  , menu:'//span[text()="App Launcher"]/ancestor::button'
+  , item:'div.modal-container a[title="{0}"]'
+  , close:'div.modal-container button[title="Close this window"]'
+};
 
 module.exports=Launcher;
 

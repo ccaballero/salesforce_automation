@@ -1,12 +1,12 @@
 const expect=require('chai').expect
   , config=require('../config')
-  , Commons=require('../core/commons');
+  , Common=require('../Utils/Common');
 
 describe('init.js',()=>{
     it('web title',()=>{
-        Commons.setUrl(config.url.login);
+        Common.setUrl(config.url.login);
 
-        expect(Commons.getTitle()).to.be.equal('Login | Salesforce');
+        expect(Common.getTitle()).to.be.equal('Login | Salesforce');
     });
 });
 
