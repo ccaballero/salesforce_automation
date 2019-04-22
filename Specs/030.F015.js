@@ -7,8 +7,8 @@ const expect=require('chai').expect
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('028.F014.js',()=>{
-    var name='products.charts.functional'
+describe('030.F014.js',()=>{
+    var name='products.filter.functional'
       , active=true
       , code='FUNCTIONAL'
       , description='PRODUCT DESCRIPTION';
@@ -17,7 +17,7 @@ describe('028.F014.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('F014 - «Mostrar Gráficos» está habilitado mientras se use una «vista '+
+    it('F015 - «Mostrar filtros» está habilitado mientras se use una «vista '+
         'de lista» determinada',()=>{
         let list=Launcher.app('Products');
 
@@ -40,7 +40,7 @@ describe('028.F014.js',()=>{
 
         expect(list.currentListView()).to.equal(name);
         expect(Common.exist(
-            List.patterns.controls.format('Show charts'))).to.equal(true);
+            List.patterns.controls.format('Hide filters'))).to.equal(true);
 
         list.listViewControls('Delete')
             .confirm(2);

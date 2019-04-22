@@ -38,6 +38,8 @@ class New{
 
     save(){
         Common.click(New.patterns.save);
+
+        return this;
     }
 }
 

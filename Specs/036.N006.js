@@ -5,18 +5,19 @@ const expect=require('chai').expect
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('126.F075.js',()=>{
+describe('036.N006.js',()=>{
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('F075 - En el iniciador de aplicación de salesforce puede verse el '+
-        'enlace a «Listas de precios»',()=>{
-        let launcher=new Launcher().open();
+    it('N006 - Mensaje «No hay elementos para mostrar» cuando ningún '+
+        'producto ha sido registrado',()=>{
+        let list=Launcher.app('Products')
+          , message=list.emptyMessage();
 
-        expect(launcher.exists('Price Books')).to.equal(true);
-
-        launcher.close();
+        expect(message[0])
+            .to.equal('You haven\'t viewed any products recently.');
+        expect(message[1]).to.equal('Try switching list views.');
     });
 
     after(()=>{

@@ -8,7 +8,7 @@ const expect=require('chai').expect
   , credentials=config.credentials.administrator;
 
 describe('027.N003.js',()=>{
-    var name='products.show.negative'
+    var name='products.charts.negative'
       , active=true
       , code='NEGATIVE'
       , description='PRODUCT DESCRIPTION';
@@ -17,8 +17,8 @@ describe('027.N003.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('«Mostrar Gráficos» está deshabilitado mientras no se use una «vista '+
-        'de lista» determinada',()=>{
+    it('N003 - «Mostrar Gráficos» está deshabilitado mientras no se use una '+
+        '«vista de lista» determinada',()=>{
         let list=Launcher.app('Products');
 
         list.new()

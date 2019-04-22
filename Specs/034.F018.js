@@ -1,14 +1,12 @@
 const expect=require('chai').expect
   , config=require('../config')
-  , Common=require('../Utils/Common')
   , Launcher=require('../PageObjects/Launcher.po')
-  , List=require('../PageObjects/List.po')
   , Login=require('../PageObjects/Login.po')
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('028.F014.js',()=>{
-    var name='products.charts.functional'
+describe('034.F018.js',()=>{
+    var name='products.filter.functional'
       , active=true
       , code='FUNCTIONAL'
       , description='PRODUCT DESCRIPTION';
@@ -17,13 +15,13 @@ describe('028.F014.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('F014 - «Mostrar Gráficos» está habilitado mientras se use una «vista '+
-        'de lista» determinada',()=>{
+    it('F014 - Activar un «Vista de Lista» creada, filtra los productos '+
+        'basados en sus criterios establecidos',()=>{
         let list=Launcher.app('Products');
 
         list.new()
             .fill({
-                name:name+' 01'
+                name:name
               , active:active
               , code:code
               , description:description
@@ -38,14 +36,15 @@ describe('028.F014.js',()=>{
             })
             .save();
 
-        expect(list.currentListView()).to.equal(name);
-        expect(Common.exist(
-            List.patterns.controls.format('Show charts'))).to.equal(true);
+        expect(list.currentListView(1,3000)).to.equal(name);
+
+        expect(list.totalRows()).to.equal(1);
+        expect(list.row(name)).to.not.equal(null);
 
         list.listViewControls('Delete')
             .confirm(2);
 
-        list.row(name+' 01')
+        list.row(name)
             .options()
             .delete()
             .confirm();

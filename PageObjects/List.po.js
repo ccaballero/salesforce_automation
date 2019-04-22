@@ -21,7 +21,7 @@ class List {
         switch(this.module){
             case 'Products':
                 return new New_Product();
-            case 'PriceBooks':
+            case 'Price Books':
                 return new New_PriceBook();
         }
     }
@@ -113,7 +113,9 @@ class List {
         }
     }
 
-    currentListView(type=1){
+    currentListView(type=1,delay=0){
+        Common.pause(delay);
+
         switch(type){
             case 1:
                 return Common.text(List.patterns.listView);
