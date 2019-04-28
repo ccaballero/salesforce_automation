@@ -93,6 +93,10 @@ class Common {
     static keys(sequence){
         browser.keys(sequence);
     }
+
+    static size(selector){
+        return browser.getElementSize(selector);
+    }
 }
 
 module.exports=Common;

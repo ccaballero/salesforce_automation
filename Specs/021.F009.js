@@ -40,11 +40,11 @@ describe('021.F009.js',()=>{
             .search('DESCRIPTION');
 
         expect(list.totalRows()).to.equal(2);
-        expect(list.row(name+' 01')).to.not.equal(null);
-        expect(list.row(name+' 02')).to.not.equal(null);
+        expect(list.rowByName(name+' 01')).to.not.equal(null);
+        expect(list.rowByName(name+' 02')).to.not.equal(null);
 
         list.clearSearch()
-            .row(name+' 01')
+            .rowByName(name+' 01')
             .options()
             .delete()
             .confirm();
@@ -53,12 +53,12 @@ describe('021.F009.js',()=>{
             .refresh()
             .search('DESCRIPTION');
 
-        expect(list.totalRows()).to.equal(1);
-        expect(list.row(name+' 01')).to.equal(null);
-        expect(list.row(name+' 02')).to.not.equal(null);
+        expect(list.totalrowByName()).to.equal(1);
+        expect(list.rowByName(name+' 01')).to.equal(null);
+        expect(list.rowByName(name+' 02')).to.not.equal(null);
 
         list.clearSearch()
-            .row(name+' 02')
+            .rowByName(name+' 02')
             .options()
             .delete()
             .confirm();

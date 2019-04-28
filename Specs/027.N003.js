@@ -52,7 +52,7 @@ describe('027.N003.js',()=>{
             .listViewControls('Delete')
             .confirm(2);
 
-        list.row(name+' 01')
+        list.rowByName(name+' 01')
             .options()
             .delete()
             .confirm();

@@ -5,18 +5,18 @@ const expect=require('chai').expect
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('049.A003.js',()=>{
-    var name='products.list.acceptance'
+describe('037.F019.js',()=>{
+    var name='products.list.functional'
       , active=true
-      , code='ACCEPTANCE'
+      , code='FUNCTIONAL'
       , description='PRODUCT DESCRIPTION';
 
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('A003 - Tabla de productos registra la información modificada de '+
-        'las celdas editadas',()=>{
+    it('F019 - Columnas en la tabla de productos pueden reordenar la lista '+
+        'dinámicamente',()=>{
         let list=Launcher.app('Products');
 
         list.new()
@@ -28,14 +28,14 @@ describe('049.A003.js',()=>{
             })
             .saveAndNew(false)
             .fill({
-                name:name+' 02'
+                name:name+' 03'
               , active:active
               , code:code
               , description:description
             })
             .saveAndNew(false)
             .fill({
-                name:name+' 03'
+                name:name+' 02'
               , active:active
               , code:code
               , description:description
@@ -46,27 +46,18 @@ describe('049.A003.js',()=>{
             .refresh();
 
         expect(list.totalRows()).to.equal(3);
-        expect(list.rowByName(name+' 01')).to.not.equal(null);
-        expect(list.rowByName(name+' 02')).to.not.equal(null);
-        expect(list.rowByName(name+' 03')).to.not.equal(null);
-        expect(list.rowByName(name+' 04')).to.equal(null);
 
-        let message=Launcher.app('Products')
-            .refresh()
-            .edit()
-            .keys(['Backspace','4','Enter'])
-            .saveEdit();
+        list.sortByHeader('Product Name');
 
-        expect(message.result()).to.equal('success');
-        expect(message.text()).to.equal('Your changes are saved.');
+        expect(list.rowByIndex(1).name).to.equal(name+' 01');
+        expect(list.rowByIndex(2).name).to.equal(name+' 02');
+        expect(list.rowByIndex(3).name).to.equal(name+' 03');
 
-        Launcher.app('Products').refresh();
+        list.sortByHeader('Product Name');
 
-        expect(list.totalRows()).to.equal(3);
-        expect(list.rowByName(name+' 01')).to.not.equal(null);
-        expect(list.rowByName(name+' 02')).to.not.equal(null);
-        expect(list.rowByName(name+' 03')).to.equal(null);
-        expect(list.rowByName(name+' 04')).to.not.equal(null);
+        expect(list.rowByIndex(1).name).to.equal(name+' 03');
+        expect(list.rowByIndex(2).name).to.equal(name+' 02');
+        expect(list.rowByIndex(3).name).to.equal(name+' 01');
 
         list.rowByName(name+' 01')
             .options()
@@ -78,7 +69,7 @@ describe('049.A003.js',()=>{
             .delete()
             .confirm();
 
-        list.rowByName(name+' 04')
+        list.rowByName(name+' 03')
             .options()
             .delete()
             .confirm();

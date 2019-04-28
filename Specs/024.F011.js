@@ -41,15 +41,15 @@ describe('024.F011.js',()=>{
             .displayTable();
 
         expect(list.totalRows()).to.equal(2);
-        expect(list.row(name+' 01')).to.not.equal(null);
-        expect(list.row(name+' 02')).to.not.equal(null);
+        expect(list.rowByName(name+' 01')).to.not.equal(null);
+        expect(list.rowByName(name+' 02')).to.not.equal(null);
 
-        list.row(name+' 01')
+        list.rowByName(name+' 01')
             .options()
             .delete()
             .confirm();
 
-        list.row(name+' 02')
+        list.rowByName(name+' 02')
             .options()
             .delete()
             .confirm();

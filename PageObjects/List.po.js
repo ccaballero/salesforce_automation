@@ -40,19 +40,19 @@ class List {
 
     search(query){
         Common.setValue(List.patterns.search,query);
-        Common.click(List.patterns.container, 8000);
+        Common.click(List.patterns.container,8000);
 
         return this;
     }
 
     clearSearch(){
         Common.click(List.patterns.clearSearch);
-        Common.click(List.patterns.container, 8000);
+        Common.click(List.patterns.container,8000);
 
         return this;
     }
 
-    row(name){
+    rowByName(name){
         if(Common.exist(List.patterns.element.format(name))){
             return new Row(name);
         }else{
@@ -60,8 +60,36 @@ class List {
         }
     }
 
+    rowByIndex(index=0){
+        browser.pause(5000);
+
+        if(Common.exist(List.patterns.rowIndex.format(index))){
+            return new Row(Common.text(
+                List.patterns.rowIndex.format(index)));
+        }else{
+            return null;
+        }
+    }
+
     totalRows(){
-        return Common.selects(List.patterns.rows).length;
+        return Common.selects(List.patterns.rowsName).length;
+    }
+
+    sortByHeader(header){
+        Common.click(List.patterns.tableHeaderSort.format(header),5000);
+    }
+
+    headerOptions(header){
+        Common.click(List.patterns.tableHeaderOptions.format(header),1000);
+
+        return this;
+    }
+
+    headerOptionsItem(header,item){
+        Common.click(
+            List.patterns.tableHeaderOptionsItem.format(header,item),2000);
+
+        return this;
     }
 
     card(name){
@@ -161,7 +189,14 @@ List.patterns={
   , search:'div.slds-page-header input[type="search"]'
   , clearSearch:'button[data-element-id="searchClear"]'
   , element:'//a[text()="{0}"]'
-  , rows:'table.slds-table>tbody tr'
+  , rowsName:'table.slds-table>tbody tr'
+  , rowIndex:'table.slds-table>tbody tr:nth-child({0})>th>span>a'
+  , tableHeaderSort:'//span[text()="{0}"]/parent::a'
+  , tableHeaderOptions:'//span[text()="{0}"]/parent::a/following-sibling::div'+
+        '/button'
+  , tableHeaderOptionsItem:'//span[text()="{0}"]/parent::a'+
+        '/following-sibling::div/div/ul/li/a/span[text()="{1}"]/parent::a'
+  , tableRow:'//table[contains(@class,"slds-table")]/tbody/tr[{0}]/td[1]'
   , cards:'//span[text()="{0}"]/ancestor::h2/following-sibling::div'+
         '/descendant::ul/child::li'
   , empty:'div.emptyContent p'

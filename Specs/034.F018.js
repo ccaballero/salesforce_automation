@@ -39,12 +39,12 @@ describe('034.F018.js',()=>{
         expect(list.currentListView(1,3000)).to.equal(name);
 
         expect(list.totalRows()).to.equal(1);
-        expect(list.row(name)).to.not.equal(null);
+        expect(list.rowByName(name)).to.not.equal(null);
 
         list.listViewControls('Delete')
             .confirm(2);
 
-        list.row(name)
+        list.rowByName(name)
             .options()
             .delete()
             .confirm();

@@ -1,22 +1,24 @@
 const expect=require('chai').expect
   , config=require('../config')
+  , Common=require('../Utils/Common')
   , Launcher=require('../PageObjects/Launcher.po')
+  , List=require('../PageObjects/List.po')
   , Login=require('../PageObjects/Login.po')
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('022.N002.js',()=>{
-    var name='products.search.negative'
+describe('038.F020.js',()=>{
+    var name='products.list.functional '.repeat(8)
       , active=true
-      , code='NEGATIVE'
+      , code='FUNCTIONAL'
       , description='PRODUCT DESCRIPTION';
 
     before(()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('N002 - Mensaje «No hay elementos para mostrar» se muestra cuando la '+
-       'búsqueda no presenta resultados',()=>{
+    it('F020 - Columnas en la tabla de productos permiten '+
+        '«Ajustar Texto»',()=>{
         let list=Launcher.app('Products');
 
         list.new()
@@ -28,14 +30,15 @@ describe('022.N002.js',()=>{
             })
             .save();
 
-        Launcher.app('Products')
-            .refresh()
-            .search('not found');
+        Launcher.app('Products');
 
-        expect(list.emptyMessage()).to.equal('No items to display.');
+        list.headerOptions('Product Name')
+            .headerOptionsItem('Product Name','Clip text');
 
-        list.clearSearch()
-            .rowByName(name)
+        expect(Common.size(List.patterns.tableRow.format(1)).height)
+            .to.equal(29);
+
+        list.rowByIndex(1)
             .options()
             .delete()
             .confirm();

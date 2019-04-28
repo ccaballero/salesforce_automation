@@ -45,7 +45,7 @@ describe('028.F014.js',()=>{
         list.listViewControls('Delete')
             .confirm(2);
 
-        list.row(name+' 01')
+        list.rowByName(name+' 01')
             .options()
             .delete()
             .confirm();
