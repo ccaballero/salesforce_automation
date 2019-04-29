@@ -61,7 +61,7 @@ class List {
     }
 
     rowByIndex(index=0){
-        browser.pause(5000);
+        Common.pause(5000);
 
         if(Common.exist(List.patterns.rowIndex.format(index))){
             return new Row(Common.text(
@@ -180,6 +180,12 @@ class List {
             return this;
         }
     }
+
+    cancelEdit(){
+        Common.click(List.patterns.editActions.format('Cancel'));
+
+        return this;
+    }
 }
 
 List.patterns={
@@ -196,7 +202,9 @@ List.patterns={
         '/button'
   , tableHeaderOptionsItem:'//span[text()="{0}"]/parent::a'+
         '/following-sibling::div/div/ul/li/a/span[text()="{1}"]/parent::a'
-  , tableRow:'//table[contains(@class,"slds-table")]/tbody/tr[{0}]/td[1]'
+  , tableRow1:'//table[contains(@class,"slds-table")]/tbody/tr[{0}]/td[1]'
+  , tableRowName:'//table[contains(@class,"slds-table")]/tbody/tr[{0}]/th/span/a'
+  , tableRows:'//table[contains(@class,"slds-table")]/tbody/tr[{0}]/*[contains(@class,"cellContainer")]/span/*[1]'
   , cards:'//span[text()="{0}"]/ancestor::h2/following-sibling::div'+
         '/descendant::ul/child::li'
   , empty:'div.emptyContent p'

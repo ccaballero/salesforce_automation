@@ -7,8 +7,8 @@ const expect=require('chai').expect
   , Profile=require('../PageObjects/Profile.po')
   , credentials=config.credentials.administrator;
 
-describe('038.F020.js',()=>{
-    var name='products.list.functional '.repeat(8)
+describe('045.F027.js',()=>{
+    var name='products.list.functional'
       , active=true
       , code='FUNCTIONAL'
       , description='PRODUCT DESCRIPTION';
@@ -17,28 +17,35 @@ describe('038.F020.js',()=>{
         Login.loginAs(credentials.username,credentials.password);
     });
 
-    it('F020 - Columnas en la tabla de productos permiten '+
-        '«Ajustar Texto»',()=>{
+    it('F027 - Celdas de la tabla de productos pueden ser editados',()=>{
         let list=Launcher.app('Products');
 
         list.new()
             .fill({
-                name:name
+                name:name+' 01'
               , active:active
               , code:code
               , description:description
             })
             .save();
 
-        Launcher.app('Products');
+        Launcher.app('Products')
+            .refresh();
 
-        list.headerOptions('Product Name')
-            .headerOptionsItem('Product Name','Clip text');
+        expect(list.rowByName(name+' 01')).to.not.equal(null);
 
-        expect(Common.size(List.patterns.tableRow1.format(1)).height)
-            .to.equal(29);
+        list.edit()
+            .keys(['Backspace','4','Enter']);
 
-        list.rowByIndex(1)
+        let row=Common.text(List.patterns.tableRows.format(1),false);
+
+        expect(row[2]).to.equal(name+' 04');
+        expect(row[3]).to.equal(code);
+        expect(row[4]).to.equal(description);
+
+        list.cancelEdit();
+
+        list.rowByName(name+' 01')
             .options()
             .delete()
             .confirm();

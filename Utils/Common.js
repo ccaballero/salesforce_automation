@@ -66,14 +66,18 @@ class Common {
         return browser.element(selector).value;
     }
 
-    static text(selector){
-        browser.waitForVisible(selector,timeout);
+    static text(selector,wait=true){
+        if(wait){
+            browser.waitForVisible(selector,timeout);
+        }
 
         return browser.getText(selector);
     }
 
-    static selects(selector){
-        browser.waitForVisible(selector,timeout);
+    static selects(selector,wait=true){
+        if(wait){
+            browser.waitForVisible(selector,timeout);
+        }
 
         return browser.elements(selector).value;
     }

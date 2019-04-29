@@ -35,7 +35,7 @@ describe('038.F020.js',()=>{
         list.headerOptions('Product Name')
             .headerOptionsItem('Product Name','Wrap text');
 
-        expect(Common.size(List.patterns.tableRow.format(1)).height)
+        expect(Common.size(List.patterns.tableRow1.format(1)).height)
             .to.equal(65);
 
         list.rowByIndex(1)
