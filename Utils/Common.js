@@ -91,6 +91,7 @@ class Common {
     }
 
     static pause(delay){
+        // miliseconds
         browser.pause(delay);
     }
 
@@ -100,6 +101,10 @@ class Common {
 
     static size(selector){
         return browser.getElementSize(selector);
+    }
+
+    static refresh(){
+        browser.refresh();
     }
 }
 

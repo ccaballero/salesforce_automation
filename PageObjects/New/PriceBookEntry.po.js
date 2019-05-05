@@ -10,38 +10,20 @@ class New{
     }
 
     fill(obj){
-        if(obj.name){
-            this.name=obj.name;
-        }
-
-        if(obj.active){
-            Common.click(Modal.patterns.input.format('Active'));
-        }
-
-        if(obj.description){
-            this.description=obj.description;
+        if(obj.listprice){
+            this.listprice=obj.listprice;
         }
 
         return this;
     }
 
-    set name(name){
-        Common.setValue(Modal.patterns.input.format('Price Book Name'),name);
+    set listprice(listprice){
+        Common.setValue(Modal.patterns.input.format('List Price'),listprice);
     }
 
-    get name(){
+    get listprice(){
         return Common.getValue(
-            Modal.patterns.input.format('Price Book Name'));
-    }
-
-    set description(description){
-        Common.setValue(Modal.patterns.input.format('Description'),
-            description);
-    }
-
-    get description(){
-        return Common.getValue(
-            Modal.patterns.input.format('Description'));
+            Modal.patterns.input.format('List Price'));
     }
 
     save(successful=true){

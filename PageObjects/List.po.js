@@ -60,7 +60,7 @@ class List {
         }
     }
 
-    rowByIndex(index=0){
+    rowByIndex(index){
         Common.pause(5000);
 
         if(Common.exist(List.patterns.rowIndex.format(index))){

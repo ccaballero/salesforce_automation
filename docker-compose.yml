@@ -16,15 +16,15 @@ services:
             NODE_MAX_SESSION: 5
         depends_on:
             - hub
-#   firefox:
-#       image: selenium/node-firefox-debug
-#       ports:
-#           - '32770'
-#           - '5901:5900'
-#       environment:
-#           HUB_HOST: hub
-#           NODE_MAX_INSTANCES: 5
-#           NODE_MAX_SESSION: 5
-#       depends_on:
-#           - hub
+    firefox:
+        image: selenium/node-firefox-debug
+        ports:
+            - '32770'
+            - '5901:5900'
+        environment:
+            HUB_HOST: hub
+            NODE_MAX_INSTANCES: 5
+            NODE_MAX_SESSION: 5
+        depends_on:
+            - hub
 

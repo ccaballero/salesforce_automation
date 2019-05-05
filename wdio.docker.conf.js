@@ -1,4 +1,4 @@
-const {docker}=require('./test/config');
+const {docker}=require('./config');
 
 var config=require('./wdio.conf').config;
 

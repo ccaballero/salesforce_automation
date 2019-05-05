@@ -1,5 +1,7 @@
 const Common=require('../Utils/Common')
-  , Confirmation=require('./Confirmation.po');
+  , Confirmation=require('./Confirmation.po')
+  , New_AddToPriceBook=require('./New/AddToPriceBook.po')
+  , New_PriceBookEntry=require('./New/PriceBookEntry.po');
 
 class View {
     constructor(){
@@ -17,13 +19,14 @@ class View {
     }
 
     related(){
-        Common.click(View.patterns.tabs.format('Related'));
+        Common.wait(View.patterns.tabs.format('Related'));
+        Common.click(View.patterns.tabs.format('Related'),1000);
 
         return this;
     }
 
     details(){
-        Common.click(View.patterns.tabs.format('Details'));
+        Common.click(View.patterns.tabs.format('Details'),1000);
 
         return this;
     }
@@ -48,6 +51,18 @@ class View {
 
         return new Confirmation();
     }
+
+    addStandardPrice(){
+        Common.click(View.patterns.button.format('Add Standard Price'));
+
+        return new New_PriceBookEntry();
+    }
+
+    addToPriceBook(){
+        Common.click(View.patterns.button.format('Add to Price Book'));
+
+        return new New_AddToPriceBook();
+    }
 }
 
 View.patterns={
@@ -61,6 +76,7 @@ View.patterns={
         '/child::span/child::span'
   , checked:'//span[text()="{0}"]/parent::div/following-sibling::div'+
         '/child::span/child::span/child::img'
+  , button:'a[title="{0}"]'
 };
 
 module.exports=View;

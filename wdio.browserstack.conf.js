@@ -1,4 +1,4 @@
-const {browserstack}=require('./test/config');
+const {browserstack}=require('./config');
 
 var config=require('./wdio.conf').config;
 
